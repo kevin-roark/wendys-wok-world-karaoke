@@ -1,0 +1,14 @@
+{
+  "name": "wendys-wok-world-karaoke",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "PORT=3010 npx serve"
+  },
+  "author": "kevin roark",
+  "license": "NONE",
+  "dependencies": {
+    "lrc-parser": "^1.0.1"
+  }
+}
