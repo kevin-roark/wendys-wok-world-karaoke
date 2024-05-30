@@ -32,14 +32,43 @@ body {
   z-index: -1;
 }
 
-#lyrics {
+#lyricsWrapper {
   position: fixed;
-  bottom: 24px;
-  left: 24px;
-  color: yellow;
+  bottom: 40px;
+  left: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lyrics {
+  position: relative;
   font-size: 8rem;
   font-weight: 600;
   letter-spacing: 0.1rem;
-  line-height: 2;
-  text-shadow: 0 0 0.5rem white;
+  line-height: 1.25;
+  color: white;
+  text-shadow: 0 0 4px white;
+  white-space: nowrap;
+}
+
+#lyrics::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  color: yellow;
+  text-shadow: 0 0 8px yellow;
+  animation: karaoke-text var(--karaoke-line-duration) infinite linear;
+}
+
+@keyframes karaoke-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }

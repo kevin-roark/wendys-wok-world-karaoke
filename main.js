@@ -1,5 +1,6 @@
 const startButton = document.getElementById("startButton");
 const videoEl = document.getElementById("video");
+const lyricsWrapperEl = document.getElementById("lyricsWrapper");
 const lyricsEl = document.getElementById("lyrics");
 
 let hasStarted = false;
@@ -11,7 +12,11 @@ async function start() {
   hasStarted = true;
   startButton.style.display = "none";
 
-  const videoFiles = ["videos/market.mp4"];
+  const videoFiles = [
+    "videos/market.mp4",
+    ...Array.from({ length: 34 }, (_, i) => `videos/video_${i + 1}.mp4`),
+  ];
+
   const lyricFiles = ["json/lose-control.json"];
 
   videoEl.addEventListener("ended", function () {
@@ -36,7 +41,15 @@ async function playLyricData(lyrics) {
   for (const line of lyrics.scripts) {
     const { start, text, end } = line;
     const duration = end - start;
+
+    lyricsEl.parentNode.removeChild(lyricsEl);
+
+    lyricsEl.style.fontSize = getFontSize(text);
     lyricsEl.innerText = text;
+    lyricsEl.setAttribute("data-text", text);
+    lyricsEl.style.setProperty("--karaoke-line-duration", `${duration}s`);
+
+    lyricsWrapperEl.appendChild(lyricsEl);
     await delaySeconds(duration);
   }
 }
@@ -56,4 +69,12 @@ function delay(ms) {
 
 function delaySeconds(s) {
   return delay(s * 1000);
+}
+
+function getFontSize(text) {
+  const numChars = text.length;
+  if (numChars > 30) return "3rem";
+  if (numChars > 20) return "4rem";
+  if (numChars > 12) return "6rem";
+  return "8rem";
 }
