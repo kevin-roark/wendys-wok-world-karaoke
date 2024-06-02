@@ -1,0 +1,465 @@
+{
+  "id": "yyugrten",
+  "ar": "Eminem",
+  "al": "Recovery",
+  "ti": "Love The Way You Lie",
+  "au": "H. Hafferman",
+  "by": "【ϣ.є】ツ™",
+  "scripts": [
+    {
+      "start": 0,
+      "text": "Sync by【ϣ.є】ツ™",
+      "end": 0
+    },
+    {
+      "start": 0,
+      "text": " ",
+      "end": 0
+    },
+    {
+      "start": 0,
+      "text": "(Chorus: Rihanna)",
+      "end": 0
+    },
+    {
+      "start": 0,
+      "text": "Just gonna stand there and watch me burn?",
+      "end": 5.109
+    },
+    {
+      "start": 5.109,
+      "text": "Well, that's all right because I like the way it hurts",
+      "end": 10.987
+    },
+    {
+      "start": 10.987,
+      "text": "Just gonna stand there and hear me cry?",
+      "end": 16.142
+    },
+    {
+      "start": 16.142,
+      "text": "Well, that's all right because I love the way you lie",
+      "end": 21.611
+    },
+    {
+      "start": 21.611,
+      "text": "I love the way you lie",
+      "end": 24.212
+    },
+    {
+      "start": 24.212,
+      "text": " ",
+      "end": 24.99
+    },
+    {
+      "start": 24.99,
+      "text": "(Verse 1: Eminem)",
+      "end": 24.992
+    },
+    {
+      "start": 24.992,
+      "text": "I can't tell you what it really is, I can only tell you what it feels like",
+      "end": 28.942
+    },
+    {
+      "start": 28.942,
+      "text": "And right now, there's a steel knife in my windpipe",
+      "end": 31.684
+    },
+    {
+      "start": 31.684,
+      "text": "I can't breathe, but I still fight while I can fight",
+      "end": 34.42
+    },
+    {
+      "start": 34.42,
+      "text": "As long as the wrong feels right, it's like I'm in flight",
+      "end": 37.337
+    },
+    {
+      "start": 37.337,
+      "text": "High off her love, drunk from her hate",
+      "end": 39.201
+    },
+    {
+      "start": 39.201,
+      "text": "It's like I'm huffin' paint and I love her, the more I suffer, I suffocate",
+      "end": 42.746
+    },
+    {
+      "start": 42.746,
+      "text": "And right before I'm about to drown, she resuscitates me",
+      "end": 46.024
+    },
+    {
+      "start": 46.024,
+      "text": "She fuckin' hates me, and I love it — \"Wait!",
+      "end": 48.399
+    },
+    {
+      "start": 48.399,
+      "text": "Where you going?\" — \"I'm leaving you!\" — \"No, you ain't!",
+      "end": 50.936
+    },
+    {
+      "start": 50.936,
+      "text": "Come back!\" — We're runnin' right back, here we go again",
+      "end": 53.768
+    },
+    {
+      "start": 53.768,
+      "text": "It's so insane, 'cause when it's goin' good, it's goin' great",
+      "end": 56.598
+    },
+    {
+      "start": 56.598,
+      "text": "I'm Superman with the wind at his back, she's Lois Lane",
+      "end": 59.266
+    },
+    {
+      "start": 59.266,
+      "text": "But when it's bad, it's awful, I feel so ashamed",
+      "end": 62.16
+    },
+    {
+      "start": 62.16,
+      "text": "I snapped, \"Who's that dude?\", I don't even know his name",
+      "end": 64.77
+    },
+    {
+      "start": 64.77,
+      "text": "I laid hands on her, I'll never stoop so low again",
+      "end": 67.7
+    },
+    {
+      "start": 67.7,
+      "text": "I guess I don't know my own strength",
+      "end": 69.33
+    },
+    {
+      "start": 69.33,
+      "text": " ",
+      "end": 69.33
+    },
+    {
+      "start": 69.33,
+      "text": "(Chorus: Rihanna)",
+      "end": 69.34
+    },
+    {
+      "start": 69.34,
+      "text": "Just gonna stand there and watch me burn?",
+      "end": 74.24
+    },
+    {
+      "start": 74.24,
+      "text": "Well, that's all right because I like the way it hurts",
+      "end": 80.12
+    },
+    {
+      "start": 80.12,
+      "text": "Just gonna stand there and hear me cry?",
+      "end": 85.23
+    },
+    {
+      "start": 85.23,
+      "text": "Well, that's all right because I love the way you lie",
+      "end": 90.72
+    },
+    {
+      "start": 90.72,
+      "text": "I love the way you lie",
+      "end": 96.25
+    },
+    {
+      "start": 96.25,
+      "text": "I love the way you lie",
+      "end": 99.28
+    },
+    {
+      "start": 99.28,
+      "text": " ",
+      "end": 102.5
+    },
+    {
+      "start": 102.5,
+      "text": "(Verse 2: Eminen)",
+      "end": 102.51
+    },
+    {
+      "start": 102.51,
+      "text": "You ever love somebody so much you can barely breathe when you're with 'em?",
+      "end": 105.82
+    },
+    {
+      "start": 105.82,
+      "text": "You meet, and neither one of you even know what hit 'em",
+      "end": 108.57
+    },
+    {
+      "start": 108.57,
+      "text": "Got that warm fuzzy feelin', yeah, them chills, used to get 'em",
+      "end": 111.48
+    },
+    {
+      "start": 111.48,
+      "text": "Now you're gettin' fuckin' sick of lookin' at 'em?",
+      "end": 113.53
+    },
+    {
+      "start": 113.53,
+      "text": "You swore you'd never hit 'em, never do nothin' to hurt 'em",
+      "end": 116.08
+    },
+    {
+      "start": 116.08,
+      "text": "Now you're in each other's face",
+      "end": 117.51
+    },
+    {
+      "start": 117.51,
+      "text": "Spewin' venom in your words when you spit 'em",
+      "end": 119.92
+    },
+    {
+      "start": 119.92,
+      "text": "You push, pull each other's hair, scratch, claw, bit 'em",
+      "end": 122.49
+    },
+    {
+      "start": 122.49,
+      "text": "Throw 'em down, pin 'em",
+      "end": 123.37
+    },
+    {
+      "start": 123.37,
+      "text": "So lost in the moments when you're in 'em",
+      "end": 125.17
+    },
+    {
+      "start": 125.17,
+      "text": "It's the rage that took over, it controls you both",
+      "end": 127.43
+    },
+    {
+      "start": 127.43,
+      "text": "So they say you're best to go your separate ways",
+      "end": 129.69
+    },
+    {
+      "start": 129.69,
+      "text": "Guess that they don't know ya",
+      "end": 130.55
+    },
+    {
+      "start": 130.55,
+      "text": "'Cause today, that was yesterday, yesterday is over",
+      "end": 133.53
+    },
+    {
+      "start": 133.53,
+      "text": "It's a different day, sound like broken records playin' over",
+      "end": 136.22
+    },
+    {
+      "start": 136.22,
+      "text": "But you promised her, next time you'll show restraint",
+      "end": 138.6
+    },
+    {
+      "start": 138.6,
+      "text": "You don't get another chance, life is no Nintendo game",
+      "end": 141.31
+    },
+    {
+      "start": 141.31,
+      "text": "But you lied again",
+      "end": 142.28
+    },
+    {
+      "start": 142.28,
+      "text": "Now you get to watch her leave out the window",
+      "end": 144.53
+    },
+    {
+      "start": 144.53,
+      "text": "Guess that's why they call it window pane",
+      "end": 146.37
+    },
+    {
+      "start": 146.37,
+      "text": " ",
+      "end": 146.37
+    },
+    {
+      "start": 146.37,
+      "text": "(Chorus: Rihanna)",
+      "end": 146.37
+    },
+    {
+      "start": 146.37,
+      "text": "Just gonna stand there and watch me burn?",
+      "end": 151.49
+    },
+    {
+      "start": 151.49,
+      "text": "Well, that's all right because I like the way it hurts",
+      "end": 157.4
+    },
+    {
+      "start": 157.4,
+      "text": "Just gonna stand there and hear me cry?",
+      "end": 162.48
+    },
+    {
+      "start": 162.48,
+      "text": "Well, that's all right because I love the way you lie",
+      "end": 167.92
+    },
+    {
+      "start": 167.92,
+      "text": "I love the way you lie",
+      "end": 173.42
+    },
+    {
+      "start": 173.42,
+      "text": "I love the way you lie",
+      "end": 176.44
+    },
+    {
+      "start": 176.44,
+      "text": " ",
+      "end": 179.84
+    },
+    {
+      "start": 179.84,
+      "text": "(Verse 3: Eminem)",
+      "end": 179.84
+    },
+    {
+      "start": 179.84,
+      "text": "Now, I know we said things, did things that we didn't mean",
+      "end": 183.12
+    },
+    {
+      "start": 183.12,
+      "text": "Then we fall back into the same patterns, same routine",
+      "end": 186.14
+    },
+    {
+      "start": 186.14,
+      "text": "But your temper's just as bad as mine is, you're the same as me",
+      "end": 189.06
+    },
+    {
+      "start": 189.06,
+      "text": "When it comes to love you're just as blinded, baby, please",
+      "end": 191.75
+    },
+    {
+      "start": 191.75,
+      "text": "Come back, it wasn't you, baby, it was me",
+      "end": 194.11
+    },
+    {
+      "start": 194.11,
+      "text": "Maybe our relationship isn't as crazy as it seems",
+      "end": 196.99
+    },
+    {
+      "start": 196.99,
+      "text": "Maybe that's what happens when a tornado meets a volcano",
+      "end": 200.03
+    },
+    {
+      "start": 200.03,
+      "text": "All I know is I love you too much to walk away though",
+      "end": 202.99
+    },
+    {
+      "start": 202.99,
+      "text": "Come inside, pick up your bags off the sidewalk",
+      "end": 205.48
+    },
+    {
+      "start": 205.48,
+      "text": "Don't you hear sincerity in my voice when I talk?",
+      "end": 208.2
+    },
+    {
+      "start": 208.2,
+      "text": "Told you this is my fault, look me in the eyeball",
+      "end": 211
+    },
+    {
+      "start": 211,
+      "text": "Next time I'm pissed, I'll aim my fist at the drywall",
+      "end": 213.77
+    },
+    {
+      "start": 213.77,
+      "text": "Next time? There won't be no next time!",
+      "end": 215.97
+    },
+    {
+      "start": 215.97,
+      "text": "I apologize, even though I know it's lies",
+      "end": 218.55
+    },
+    {
+      "start": 218.55,
+      "text": "I'm tired of the games, I just want her back, I know I'm a liar",
+      "end": 221.74
+    },
+    {
+      "start": 221.74,
+      "text": "If she ever tries to fuckin' leave again, I'ma tie her",
+      "end": 224.54
+    },
+    {
+      "start": 224.54,
+      "text": "To the bed and set this house on fire, just gonna—",
+      "end": 226.53
+    },
+    {
+      "start": 226.53,
+      "text": " ",
+      "end": 226.53
+    },
+    {
+      "start": 226.53,
+      "text": "(Chorus: Rihanna)",
+      "end": 226.54
+    },
+    {
+      "start": 226.54,
+      "text": "Just gonna stand there and watch me burn?",
+      "end": 231.43
+    },
+    {
+      "start": 231.43,
+      "text": "Well, that's all right because I like the way it hurts",
+      "end": 237.4
+    },
+    {
+      "start": 237.4,
+      "text": "Just gonna stand there and hear me cry?",
+      "end": 242.48
+    },
+    {
+      "start": 242.48,
+      "text": "Well, that's all right because I love the way you lie",
+      "end": 247.99
+    },
+    {
+      "start": 247.99,
+      "text": "I love the way you lie",
+      "end": 253.4
+    },
+    {
+      "start": 253.4,
+      "text": "I love the way you lie",
+      "end": 256.83
+    }
+  ]
+}

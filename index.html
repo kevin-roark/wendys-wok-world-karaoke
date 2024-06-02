@@ -6,10 +6,26 @@
 </head>
 <body>
   <button id="startButton">Start</button>
-  <video id="video"></video>
+
+  <audio id="wendyTrackAudio" src="audio/wendy-track.mp3"></audio>
+  
+  <video class="video-bg" id="video1Bg"></video>
+  <video class="video-fg" id="video1Fg"></video>
+  <video class="video-bg" id="video2Bg"></video>
+  <video class="video-fg" id="video2Fg"></video>
+
+  <div id="songInfo">
+    <div id="songTitle"></div>
+    <div id="songArtist"></div>
+  </div>
 
   <div id="lyricsWrapper">
     <div id="lyrics"></div>
   </div>
+
+  <div id="intermission">
+    <img id="flier-image" src="images/wendy-flier.jpg" />
+  </div>
+
   <script src="main.js"></script>
 </html>

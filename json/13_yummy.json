@@ -1,0 +1,350 @@
+{
+  "id": "tralzwbi",
+  "ar": "Justin Bieber",
+  "al": "Changes",
+  "ti": "Yummy",
+  "re": "LRC Editor - Android app",
+  "ve": "Version 3.2.1",
+  "scripts": [
+    {
+      "start": 0,
+      "text": " ",
+      "end": 5.01
+    },
+    {
+      "start": 5.01,
+      "text": "Yeah, you got that yummy-yum",
+      "end": 8.07
+    },
+    {
+      "start": 8.07,
+      "text": "That yummy-yum, that yummy-yummy",
+      "end": 11.84
+    },
+    {
+      "start": 11.84,
+      "text": "Yeah, you got that yummy-yum",
+      "end": 14.79
+    },
+    {
+      "start": 14.79,
+      "text": "That yummy-yum, that yummy-yummy",
+      "end": 17.71
+    },
+    {
+      "start": 17.71,
+      "text": "Say the word, on my way",
+      "end": 19.38
+    },
+    {
+      "start": 19.38,
+      "text": "Yeah babe, yeah babe, yeah babe",
+      "end": 21.8
+    },
+    {
+      "start": 21.8,
+      "text": "Any night, any day",
+      "end": 23.96
+    },
+    {
+      "start": 23.96,
+      "text": "Say the word, on my way",
+      "end": 25.65
+    },
+    {
+      "start": 25.65,
+      "text": "Yeah babe, yeah babe, yeah babe",
+      "end": 28.29
+    },
+    {
+      "start": 28.29,
+      "text": "In the mornin' or the late",
+      "end": 30.85
+    },
+    {
+      "start": 30.85,
+      "text": "Say the word, on my way",
+      "end": 32.66
+    },
+    {
+      "start": 32.66,
+      "text": "Bonafide stallion",
+      "end": 35.19
+    },
+    {
+      "start": 35.19,
+      "text": "It ain't no stable, no, you stay on the run",
+      "end": 38.34
+    },
+    {
+      "start": 38.34,
+      "text": "Ain't on the side, you're number one",
+      "end": 41.54
+    },
+    {
+      "start": 41.54,
+      "text": "Yeah, every time I come around, you get it done (You get it done)",
+      "end": 45.86
+    },
+    {
+      "start": 45.86,
+      "text": "Fifty-fifty, love the way you split it",
+      "end": 48.18
+    },
+    {
+      "start": 48.18,
+      "text": "Hundred racks, help me spend it, babe",
+      "end": 50.19
+    },
+    {
+      "start": 50.19,
+      "text": "Light a match, get litty, babe",
+      "end": 51.68
+    },
+    {
+      "start": 51.68,
+      "text": "That jet set, watch the sunset kinda, yeah, yeah",
+      "end": 54.66
+    },
+    {
+      "start": 54.66,
+      "text": "Rollin' eyes back in my head, make my toes curl, yeah, yeah",
+      "end": 57.95
+    },
+    {
+      "start": 57.95,
+      "text": "Yeah, you got that yummy-yum",
+      "end": 60.33
+    },
+    {
+      "start": 60.33,
+      "text": "That yummy-yum, that yummy-yummy",
+      "end": 64.18
+    },
+    {
+      "start": 64.18,
+      "text": "Yeah, you got that yummy-yum",
+      "end": 68.03
+    },
+    {
+      "start": 68.03,
+      "text": "That yummy-yum, that yummy-yummy",
+      "end": 70.28
+    },
+    {
+      "start": 70.28,
+      "text": "Say the word, on my way",
+      "end": 71.92
+    },
+    {
+      "start": 71.92,
+      "text": "Yeah babe, yeah babe, yeah babe",
+      "end": 74.59
+    },
+    {
+      "start": 74.59,
+      "text": "Any night, any day",
+      "end": 76.45
+    },
+    {
+      "start": 76.45,
+      "text": "Say the word, on my way",
+      "end": 78.5
+    },
+    {
+      "start": 78.5,
+      "text": "Yeah babe, yeah babe, yeah babe",
+      "end": 80.96
+    },
+    {
+      "start": 80.96,
+      "text": "In the mornin' or the late",
+      "end": 83.43
+    },
+    {
+      "start": 83.43,
+      "text": "Say the word, on my way",
+      "end": 85.06
+    },
+    {
+      "start": 85.06,
+      "text": "Standin' up, keep me on the rise",
+      "end": 87.6
+    },
+    {
+      "start": 87.6,
+      "text": "Lost control of myself, I'm compromised",
+      "end": 91.2
+    },
+    {
+      "start": 91.2,
+      "text": "You're incriminating, no disguise (No disguise)",
+      "end": 94.26
+    },
+    {
+      "start": 94.26,
+      "text": "And you ain't never runnin' low on supplies",
+      "end": 97.59
+    },
+    {
+      "start": 97.59,
+      "text": "Fifty-fifty, love the way you split it",
+      "end": 100.9
+    },
+    {
+      "start": 100.9,
+      "text": "Hundred racks, help me spend it, babe",
+      "end": 102.61
+    },
+    {
+      "start": 102.61,
+      "text": "Light a match, get litty, babe",
+      "end": 104.41
+    },
+    {
+      "start": 104.41,
+      "text": "That jet set, watch the sunset kinda, yeah, yeah",
+      "end": 107.46
+    },
+    {
+      "start": 107.46,
+      "text": "Rollin' eyes back in my head, make my toes curl, yeah, yeah",
+      "end": 110.65
+    },
+    {
+      "start": 110.65,
+      "text": "Yeah, you got that yummy-yum",
+      "end": 113.25
+    },
+    {
+      "start": 113.25,
+      "text": "That yummy-yum, that yummy-yummy (You stay flexin' on me)",
+      "end": 116.89
+    },
+    {
+      "start": 116.89,
+      "text": "Yeah, you got that yummy-yum (Yeah, yeah)",
+      "end": 119.66
+    },
+    {
+      "start": 119.66,
+      "text": "That yummy-yum, that yummy-yummy",
+      "end": 123.22
+    },
+    {
+      "start": 123.22,
+      "text": "Say the word, on my way",
+      "end": 124.6
+    },
+    {
+      "start": 124.6,
+      "text": "Yeah babe, yeah babe, yeah babe (Yeah, babe)",
+      "end": 127.15
+    },
+    {
+      "start": 127.15,
+      "text": "Any night, any day",
+      "end": 129.66
+    },
+    {
+      "start": 129.66,
+      "text": "Say the word, on my way",
+      "end": 131.11
+    },
+    {
+      "start": 131.11,
+      "text": "Yeah babe, yeah babe, yeah babe (Yeah, babe)",
+      "end": 133.48
+    },
+    {
+      "start": 133.48,
+      "text": "In the mornin' or the late",
+      "end": 136.2
+    },
+    {
+      "start": 136.2,
+      "text": "Say the word, on my way",
+      "end": 137.64
+    },
+    {
+      "start": 137.64,
+      "text": "Hop in the Lambo', I'm on my way",
+      "end": 141.02
+    },
+    {
+      "start": 141.02,
+      "text": "Drew House slippers on with a smile on my face",
+      "end": 144.35
+    },
+    {
+      "start": 144.35,
+      "text": "I'm elated that you are my lady",
+      "end": 147.64
+    },
+    {
+      "start": 147.64,
+      "text": "You got the yum, yum, yum, yum",
+      "end": 151.41
+    },
+    {
+      "start": 151.41,
+      "text": "You got the yum, yum-yum, woah",
+      "end": 157.75
+    },
+    {
+      "start": 157.75,
+      "text": "Woah-ooh",
+      "end": 162.71
+    },
+    {
+      "start": 162.71,
+      "text": "Yeah, you got that yummy-yum",
+      "end": 165.84
+    },
+    {
+      "start": 165.84,
+      "text": "That yummy-yum, that yummy-yummy",
+      "end": 169.34
+    },
+    {
+      "start": 169.34,
+      "text": "Yeah, you got that yummy-yum",
+      "end": 172.03
+    },
+    {
+      "start": 172.03,
+      "text": "That yummy-yum, that yummy-yummy",
+      "end": 175.51
+    },
+    {
+      "start": 175.51,
+      "text": "Say the word, on my way",
+      "end": 177.13
+    },
+    {
+      "start": 177.13,
+      "text": "Yeah babe, yeah babe, yeah babe (Yeah, babe)",
+      "end": 179.66
+    },
+    {
+      "start": 179.66,
+      "text": "Any night, any day",
+      "end": 182.25
+    },
+    {
+      "start": 182.25,
+      "text": "Say the word, on my way",
+      "end": 183.62
+    },
+    {
+      "start": 183.62,
+      "text": "Yeah babe, yeah babe, yeah babe (Yeah, babe)",
+      "end": 186.2
+    },
+    {
+      "start": 186.2,
+      "text": "In the mornin' or the late",
+      "end": 188.56
+    }
+  ]
+}

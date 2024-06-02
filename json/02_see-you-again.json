@@ -1,0 +1,417 @@
+{
+  "id": "airdiuqn",
+  "ti": "See You Again",
+  "ar": "Tyler, The Creator",
+  "scripts": [
+    {
+      "start": 0.19,
+      "text": "Tyler, The Creator： ",
+      "end": 0.22
+    },
+    {
+      "start": 0.22,
+      "text": "Okay okay okay okay ",
+      "end": 1.6
+    },
+    {
+      "start": 1.6,
+      "text": "Okay okay oh ",
+      "end": 3.12
+    },
+    {
+      "start": 3.12,
+      "text": "You live in my dream state ",
+      "end": 6.08
+    },
+    {
+      "start": 6.08,
+      "text": "Relocate my fantasy ",
+      "end": 9.15
+    },
+    {
+      "start": 9.15,
+      "text": "I stay in reality ",
+      "end": 12.37
+    },
+    {
+      "start": 12.37,
+      "text": "You live in my dream state ",
+      "end": 15.3
+    },
+    {
+      "start": 15.3,
+      "text": "Any time I count sheep ",
+      "end": 17.91
+    },
+    {
+      "start": 17.91,
+      "text": "That's the only time we make up make up ",
+      "end": 21.19
+    },
+    {
+      "start": 21.19,
+      "text": "You exist behind my eyelids my eyelids ",
+      "end": 24.03
+    },
+    {
+      "start": 24.03,
+      "text": "Now I don't wanna wake up ",
+      "end": 27.54
+    },
+    {
+      "start": 27.54,
+      "text": "20/20 20/20 visions ",
+      "end": 30.29
+    },
+    {
+      "start": 30.29,
+      "text": "Cupid hit me Cupid hit me with precision eye ",
+      "end": 33.64
+    },
+    {
+      "start": 33.64,
+      "text": "Wonder if you look both ways ",
+      "end": 36
+    },
+    {
+      "start": 36,
+      "text": "When you cross my mind ",
+      "end": 38.58
+    },
+    {
+      "start": 38.58,
+      "text": "I said I said ",
+      "end": 39.69
+    },
+    {
+      "start": 39.69,
+      "text": "I'm sick of sick of sick of sick of chasing ",
+      "end": 42.41
+    },
+    {
+      "start": 42.41,
+      "text": "You're the one that's always running through my day dreams I ",
+      "end": 45.9
+    },
+    {
+      "start": 45.9,
+      "text": "I can only see your face when I close my eyes ",
+      "end": 50.13
+    },
+    {
+      "start": 50.13,
+      "text": "Kali Uchis/Tyler, The Creator： ",
+      "end": 51.36
+    },
+    {
+      "start": 51.36,
+      "text": "Can I get a kiss ",
+      "end": 53.92
+    },
+    {
+      "start": 53.92,
+      "text": "And can you make it last forever ",
+      "end": 56.88
+    },
+    {
+      "start": 56.88,
+      "text": "I said I'm 'bout to go to war ",
+      "end": 59.79
+    },
+    {
+      "start": 59.79,
+      "text": "And I don't know if I'ma see you again ",
+      "end": 63.5
+    },
+    {
+      "start": 63.5,
+      "text": "Can I get a kiss ",
+      "end": 65.15
+    },
+    {
+      "start": 65.15,
+      "text": "Can I ",
+      "end": 66.14
+    },
+    {
+      "start": 66.14,
+      "text": "And can you make it last forever ",
+      "end": 68.08
+    },
+    {
+      "start": 68.08,
+      "text": "Can you ",
+      "end": 69.04
+    },
+    {
+      "start": 69.04,
+      "text": "I said I'm 'bout to go to war ",
+      "end": 70.94
+    },
+    {
+      "start": 70.94,
+      "text": "I'm 'bout to ",
+      "end": 72.11
+    },
+    {
+      "start": 72.11,
+      "text": "And I don't know if I'ma see you again ",
+      "end": 74.75
+    },
+    {
+      "start": 74.75,
+      "text": "Ugh switch it up ",
+      "end": 75.61
+    },
+    {
+      "start": 75.61,
+      "text": "Tyler, The Creator： ",
+      "end": 76.05
+    },
+    {
+      "start": 76.05,
+      "text": "I said okay okay okay okie dokie my infatuation ",
+      "end": 79.45
+    },
+    {
+      "start": 79.45,
+      "text": "Is translatin' to another form of what you call it ",
+      "end": 82.28
+    },
+    {
+      "start": 82.28,
+      "text": "Love ",
+      "end": 82.49
+    },
+    {
+      "start": 82.49,
+      "text": "Oh yeah oh yeah oh yeah I ain't met you ",
+      "end": 84.49
+    },
+    {
+      "start": 84.49,
+      "text": "I've been looking stop the waiting ",
+      "end": 85.97
+    },
+    {
+      "start": 85.97,
+      "text": "'Fore I stop the chasing like an alcoholic ",
+      "end": 88.49
+    },
+    {
+      "start": 88.49,
+      "text": "\"You don't understand me\" what the f**k do you mean ",
+      "end": 91.32
+    },
+    {
+      "start": 91.32,
+      "text": "It's them rose-tinted cheeks yeah it's them dirt-colored eyes ",
+      "end": 94.54
+    },
+    {
+      "start": 94.54,
+      "text": "Sugar honey iced tea bumblebee on the scene ",
+      "end": 97.46
+    },
+    {
+      "start": 97.46,
+      "text": "Yeah I'd give up my bakery to have a piece of your pie ",
+      "end": 100.48
+    },
+    {
+      "start": 100.48,
+      "text": "Uugh ",
+      "end": 100.88
+    },
+    {
+      "start": 100.88,
+      "text": "20/20 20/20 visions ",
+      "end": 103.6
+    },
+    {
+      "start": 103.6,
+      "text": "Cupid hit me Cupid hit me with precision eye ",
+      "end": 106.98
+    },
+    {
+      "start": 106.98,
+      "text": "Wonder if you look both ways ",
+      "end": 109.14
+    },
+    {
+      "start": 109.14,
+      "text": "When you cross my mind ",
+      "end": 111.97
+    },
+    {
+      "start": 111.97,
+      "text": "I said I said ",
+      "end": 113.11
+    },
+    {
+      "start": 113.11,
+      "text": "I'm sick of sick of sick of sick of chasing ",
+      "end": 115.8
+    },
+    {
+      "start": 115.8,
+      "text": "You're the one that's always running through my day dreams I ",
+      "end": 119.19
+    },
+    {
+      "start": 119.19,
+      "text": "I can only see your face when I close my eyes ",
+      "end": 124.21
+    },
+    {
+      "start": 124.21,
+      "text": "So ",
+      "end": 124.63
+    },
+    {
+      "start": 124.63,
+      "text": "Kali Uchis： ",
+      "end": 124.91
+    },
+    {
+      "start": 124.91,
+      "text": "Can I get a kiss ",
+      "end": 126.2
+    },
+    {
+      "start": 126.2,
+      "text": "Can I get a kiss ",
+      "end": 127.1
+    },
+    {
+      "start": 127.1,
+      "text": "And can you make it last forever ",
+      "end": 129.15
+    },
+    {
+      "start": 129.15,
+      "text": "Make it last forever ",
+      "end": 130.45
+    },
+    {
+      "start": 130.45,
+      "text": "I said I'm 'bout to go to war ",
+      "end": 132.12
+    },
+    {
+      "start": 132.12,
+      "text": "'Bout to go to war ",
+      "end": 133.53
+    },
+    {
+      "start": 133.53,
+      "text": "I don't know if I'ma see you again ",
+      "end": 136
+    },
+    {
+      "start": 136,
+      "text": "See you again ",
+      "end": 137.06
+    },
+    {
+      "start": 137.06,
+      "text": "Can I get a kiss ",
+      "end": 138.51
+    },
+    {
+      "start": 138.51,
+      "text": "Can I ",
+      "end": 139.41
+    },
+    {
+      "start": 139.41,
+      "text": "And can you make it last forever ",
+      "end": 141.45
+    },
+    {
+      "start": 141.45,
+      "text": "Can you ",
+      "end": 142.41
+    },
+    {
+      "start": 142.41,
+      "text": "I said I'm 'bout to go to war ",
+      "end": 144.41
+    },
+    {
+      "start": 144.41,
+      "text": "'Bout to ",
+      "end": 145.38
+    },
+    {
+      "start": 145.38,
+      "text": "And I don't know if I'ma see you again ",
+      "end": 148.28
+    },
+    {
+      "start": 148.28,
+      "text": "Tyler, The Creator/Kali Uchis： ",
+      "end": 149.81
+    },
+    {
+      "start": 149.81,
+      "text": "Okay okay okay okay ",
+      "end": 151.03
+    },
+    {
+      "start": 151.03,
+      "text": "Okay okay okay oh ",
+      "end": 151.82
+    },
+    {
+      "start": 151.82,
+      "text": "La la la la la la la la ",
+      "end": 152.99
+    },
+    {
+      "start": 152.99,
+      "text": "Okay okay okay okay ",
+      "end": 153.75
+    },
+    {
+      "start": 153.75,
+      "text": "Okay okay okay oh ",
+      "end": 154.37
+    },
+    {
+      "start": 154.37,
+      "text": "La la la la la la la ",
+      "end": 155.88
+    },
+    {
+      "start": 155.88,
+      "text": "Okay okay okay okay ",
+      "end": 156.61
+    },
+    {
+      "start": 156.61,
+      "text": "Okay okay okay oh ",
+      "end": 157.34
+    },
+    {
+      "start": 157.34,
+      "text": "La la la la la la la la ",
+      "end": 158.91
+    },
+    {
+      "start": 158.91,
+      "text": "Okay okay okay okay ",
+      "end": 159.55
+    },
+    {
+      "start": 159.55,
+      "text": "Okay okay okay oh ",
+      "end": 160.14
+    },
+    {
+      "start": 160.14,
+      "text": "La la la la la la ",
+      "end": 161.28
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "id": "teenzulv",
+  "ar": "Sade",
+  "ti": "Feel No Pain",
+  "al": "Love Deluxe",
+  "length": "05:08",
+  "scripts": [
+    {
+      "start": 23.63,
+      "text": "Mama been laid off",
+      "end": 26.64
+    },
+    {
+      "start": 26.64,
+      "text": "Papa been laid off",
+      "end": 29.44
+    },
+    {
+      "start": 29.44,
+      "text": "My brother's been laid off",
+      "end": 32.32
+    },
+    {
+      "start": 32.32,
+      "text": "For more than two years now",
+      "end": 35.18
+    },
+    {
+      "start": 35.18,
+      "text": "Ooh, can't get a job",
+      "end": 38.29
+    },
+    {
+      "start": 38.29,
+      "text": "Billy can't get a job",
+      "end": 41
+    },
+    {
+      "start": 41,
+      "text": "Ooh, they gotta listen to the blues",
+      "end": 47.54
+    },
+    {
+      "start": 47.54,
+      "text": "Help them to strive",
+      "end": 50
+    },
+    {
+      "start": 50,
+      "text": "Help them to move on",
+      "end": 52.97
+    },
+    {
+      "start": 52.97,
+      "text": "Help them to have some future",
+      "end": 56.16
+    },
+    {
+      "start": 56.16,
+      "text": "Help them to live long",
+      "end": 59.07
+    },
+    {
+      "start": 59.07,
+      "text": "Help them to live life",
+      "end": 61.77
+    },
+    {
+      "start": 61.77,
+      "text": "Help them to smile",
+      "end": 64.73
+    },
+    {
+      "start": 64.73,
+      "text": "Don't let them stay home and listen to the blues",
+      "end": 70.4
+    },
+    {
+      "start": 70.4,
+      "text": "Papa been laid off",
+      "end": 73.53
+    },
+    {
+      "start": 73.53,
+      "text": "Mama been laid off",
+      "end": 76.31
+    },
+    {
+      "start": 76.31,
+      "text": "Billy can't get a job",
+      "end": 79.02
+    },
+    {
+      "start": 79.02,
+      "text": "For too long, too long",
+      "end": 82.43
+    },
+    {
+      "start": 82.43,
+      "text": "Don't let them lose",
+      "end": 84.74
+    },
+    {
+      "start": 84.74,
+      "text": "We gotta give them a chance",
+      "end": 88.14
+    },
+    {
+      "start": 88.14,
+      "text": "It's gonna come back on everyone",
+      "end": 90.81
+    },
+    {
+      "start": 90.81,
+      "text": "If you don't make them dance",
+      "end": 94.06
+    },
+    {
+      "start": 94.06,
+      "text": "Don't let them stay home and listen to the blues",
+      "end": 104.58
+    },
+    {
+      "start": 104.58,
+      "text": "There's nothing sacred",
+      "end": 106.26
+    },
+    {
+      "start": 106.26,
+      "text": "(Why, why, why)",
+      "end": 107.59
+    },
+    {
+      "start": 107.59,
+      "text": "Breathing hatred",
+      "end": 109.97
+    },
+    {
+      "start": 109.97,
+      "text": "Oh yeah, yeah, yeah",
+      "end": 116.15
+    },
+    {
+      "start": 116.15,
+      "text": "We have to face it",
+      "end": 117.48
+    },
+    {
+      "start": 117.48,
+      "text": "(Why, why, why)",
+      "end": 119.04
+    },
+    {
+      "start": 119.04,
+      "text": "No one can take it",
+      "end": 122.52
+    },
+    {
+      "start": 122.52,
+      "text": "And feel no pain",
+      "end": 125.22
+    },
+    {
+      "start": 125.22,
+      "text": "(Feel no pain)",
+      "end": 128.99
+    },
+    {
+      "start": 128.99,
+      "text": "Mama been laid off",
+      "end": 131.98
+    },
+    {
+      "start": 131.98,
+      "text": "Papa been laid off",
+      "end": 134.94
+    },
+    {
+      "start": 134.94,
+      "text": "My brother's been laid off",
+      "end": 137.67
+    },
+    {
+      "start": 137.67,
+      "text": "For more than two years now",
+      "end": 140.66
+    },
+    {
+      "start": 140.66,
+      "text": "Ooh, can't get a job",
+      "end": 143.34
+    },
+    {
+      "start": 143.34,
+      "text": "Billy can't get a job",
+      "end": 146.7
+    },
+    {
+      "start": 146.7,
+      "text": "Ooh, they gotta listen to the blues",
+      "end": 152.46
+    },
+    {
+      "start": 152.46,
+      "text": "Help them to strive",
+      "end": 155.21
+    },
+    {
+      "start": 155.21,
+      "text": "Help them to move on",
+      "end": 158.37
+    },
+    {
+      "start": 158.37,
+      "text": "Help them to have some future",
+      "end": 163.14
+    },
+    {
+      "start": 163.14,
+      "text": "Help them to live long",
+      "end": 164.18
+    },
+    {
+      "start": 164.18,
+      "text": "Help them to live life",
+      "end": 167.11
+    },
+    {
+      "start": 167.11,
+      "text": "Help them to smile",
+      "end": 170.14
+    },
+    {
+      "start": 170.14,
+      "text": "Don't let them stay home and listen to the blues",
+      "end": 187.12
+    },
+    {
+      "start": 187.12,
+      "text": "(Why, why)",
+      "end": 198.01
+    },
+    {
+      "start": 198.01,
+      "text": "One day we're gonna wake up",
+      "end": 204.76
+    },
+    {
+      "start": 204.76,
+      "text": "And the ghetto's all around",
+      "end": 210.36
+    },
+    {
+      "start": 210.36,
+      "text": "All over my friend",
+      "end": 215.75
+    },
+    {
+      "start": 215.75,
+      "text": "Have you ever seen a man break down",
+      "end": 222.71
+    },
+    {
+      "start": 222.71,
+      "text": "Do you know how that feels",
+      "end": 233.77
+    },
+    {
+      "start": 233.77,
+      "text": "To walk the street with your head held high",
+      "end": 245.22
+    },
+    {
+      "start": 245.22,
+      "text": "(Why, why, why)",
+      "end": 257.5
+    },
+    {
+      "start": 257.5,
+      "text": "Oh Lord have mercy (Why, why)",
+      "end": 262.43
+    },
+    {
+      "start": 262.43,
+      "text": "Did you ever see a man break down",
+      "end": 267.82
+    },
+    {
+      "start": 267.82,
+      "text": "There's nothing sacred (Why, why, why)",
+      "end": 271.57
+    },
+    {
+      "start": 271.57,
+      "text": "Breathing hatred (Why, why, why)",
+      "end": 279.99
+    },
+    {
+      "start": 279.99,
+      "text": "We have to face it (Why, why, why)",
+      "end": 282.2
+    },
+    {
+      "start": 282.2,
+      "text": "No-one can take it (Why, why, why)",
+      "end": 286.61
+    },
+    {
+      "start": 286.61,
+      "text": "And feel no pain (Why, why, why)",
+      "end": 296.22
+    },
+    {
+      "start": 296.22,
+      "text": "Ohh, did you ever see a man break down",
+      "end": 304.03
+    }
+  ]
+}
