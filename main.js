@@ -1,34 +1,13 @@
-const startButton = document.getElementById("startButton");
-const wendyAudioEl = document.getElementById("wendyTrackAudio");
-const videoEls = [
-  {
-    bg: document.getElementById("video1Bg"),
-    fg: document.getElementById("video1Fg"),
-  },
-  {
-    bg: document.getElementById("video2Bg"),
-    fg: document.getElementById("video2Fg"),
-  },
-];
-const songInfoEl = document.getElementById("songInfo");
-const songTitleEl = document.getElementById("songTitle");
-const songArtistEl = document.getElementById("songArtist");
-const lyricsWrapperEl = document.getElementById("lyricsWrapper");
-const lyricsEl = document.getElementById("lyrics");
-const intermissionEl = document.getElementById("intermission");
-const flyerEl = document.getElementById("flyer-image");
-
-startButton.onclick = start;
+/// CONSTANTS
 
 const msToShowSongInfo = 10000;
-const msToShowIntermission = 20000;
+const msToShowIntermission = 8000;
 const msVideoFade = 2000;
 
-const videoFiles = [
+const videoFiles = shuffle([
   "videos/market.mp4",
   ...Array.from({ length: 34 }, (_, i) => `videos/video_${i + 1}.mp4`),
-];
-shuffle(videoFiles);
+]);
 
 const songs = [
   "json/01_movement.json",
@@ -53,11 +32,36 @@ const songs = [
   "json/20_mr-brightside.json",
 ];
 
+/// SETUP
+
+const startButton = document.getElementById("startButton");
+const wendyAudioEl = document.getElementById("wendyTrackAudio");
+const videoEls = [
+  {
+    bg: document.getElementById("video1Bg"),
+    fg: document.getElementById("video1Fg"),
+  },
+  {
+    bg: document.getElementById("video2Bg"),
+    fg: document.getElementById("video2Fg"),
+  },
+];
+const songInfoEl = document.getElementById("songInfo");
+const songTitleEl = document.getElementById("songTitle");
+const songArtistEl = document.getElementById("songArtist");
+const lyricsWrapperEl = document.getElementById("lyricsWrapper");
+const lyricsEl = document.getElementById("lyrics");
+const intermissionBg = document.getElementById("intermission-bg");
+const flierEl = document.getElementById("flier-image");
+
+startButton.onclick = start;
+
 let songsData = [];
 Promise.all(songs.map((song) => fetch(song).then((res) => res.json()))).then(
   (d) => {
     songsData = d;
     console.log("loaded song lyrics", songsData);
+    hydrateSongInfo(songsData[0]);
   }
 );
 
@@ -72,11 +76,16 @@ async function start() {
   if (hasStarted) return;
   hasStarted = true;
   startButton.style.display = "none";
-  intermissionEl.style.display = "none";
 
   playVideoLoop();
+
+  await animateIntermissionOut();
+  songInfoEl.classList.remove("hidden");
+
   playSongLoop();
 }
+
+/// SONGS
 
 async function playSongLoop() {
   playNextSong();
@@ -85,13 +94,14 @@ async function playSongLoop() {
     const song = songsData[currentSongIndex];
     await playSong(song);
     currentSongIndex = (currentSongIndex + 1) % songsData.length;
+    await animateIntermission();
     playNextSong();
   }
 }
 
 async function playSong(song) {
   // start by showing song info (title, artist)
-  showSongInfo(song);
+  showSongInfo(song, true);
 
   // set up the karaoke lyrics
   const initialDelay = song.scripts[0].start;
@@ -104,7 +114,7 @@ async function playSong(song) {
 
     lyricsEl.parentNode.removeChild(lyricsEl);
 
-    lyricsEl.style.fontSize = getFontSize(text);
+    lyricsEl.style.fontSize = getLyricsFontSize(text);
     lyricsEl.innerText = text;
     lyricsEl.setAttribute("data-text", text);
     lyricsEl.style.setProperty("--karaoke-line-duration", `${duration}s`);
@@ -116,16 +126,76 @@ async function playSong(song) {
 
 // shows the song title and artist for a few seconds
 async function showSongInfo(song) {
+  hydrateSongInfo(song);
+
+  songInfoEl.classList.add("large");
+  await delay(msToShowSongInfo - 500);
+  songInfoEl.classList.remove("large");
+}
+
+function hydrateSongInfo(song) {
   const { ti: title, ar: artist } = song;
   songTitleEl.textContent = title;
   songArtistEl.textContent = artist;
-  songInfoEl.style.animation = `fadeIn 1s forwards`;
-  songInfoEl.style.display = "block";
-  await delay(msToShowSongInfo - 1000);
-  songInfoEl.style.animation = `fadeOut 1s forwards`;
-  await delay(1000);
-  songInfoEl.style.display = "none";
 }
+
+function getLyricsFontSize(text) {
+  const numChars = text.length;
+  if (numChars > 30) return "4rem";
+  if (numChars > 20) return "6rem";
+  if (numChars > 12) return "8rem";
+  return "10rem";
+}
+
+/// Intermission
+
+async function animateIntermission() {
+  animateIntermissionIn();
+  await delay(msToShowIntermission - 2000);
+  await animateIntermissionOut();
+}
+
+async function animateIntermissionIn() {
+  const slideInAnimations = [
+    "slideInFromLeft",
+    "slideInFromRight",
+    "slideInFromTop",
+    "slideInFromBottom",
+  ];
+  const idleAnimations = ["pulse", "bounce", "spin", "shake"];
+
+  flierEl.style.display = "none";
+  intermissionBg.style.opacity = 1;
+  intermissionBg.style.display = "block";
+  intermissionBg.style.animation = `fadeIn 0.5s ease, scaleInGentle 0.8s ease`;
+  await delay(500);
+
+  flierEl.style.display = "block";
+  flierEl.style.animation = `${choice(slideInAnimations)} 2s ease`;
+  await delay(2000);
+
+  flierEl.style.animation = `${choice(idleAnimations)} 2s ease infinite`;
+}
+
+async function animateIntermissionOut() {
+  const slideOutAnimations = [
+    "slideOutToRight",
+    "slideOutToLeft",
+    "slideOutToTop",
+    "slideOutToBottom",
+  ];
+
+  flierEl.style.animation = `${choice(slideOutAnimations)} 2s ease`;
+  setTimeout(() => {
+    intermissionBg.style.opacity = 0;
+    intermissionBg.style.animation = `fadeOut 0.5s ease, scaleOutGentle 0.5s ease`;
+  }, 500);
+
+  await delay(2000);
+  flierEl.style.display = "none";
+}
+
+/// VIDEO
 
 function playVideoLoop() {
   // intialize the video elements
@@ -215,12 +285,14 @@ async function playVideo(bgVideoEl, fgVideoEl, videoFile) {
   bgVideoEl.play();
 }
 
+/// UTILS
+
 function choice(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
 function shuffle(items) {
-  items.sort(() => Math.random() - 0.5);
+  return items.sort(() => Math.random() - 0.5);
 }
 
 function delay(ms) {
@@ -229,14 +301,6 @@ function delay(ms) {
 
 function delaySeconds(s) {
   return delay(s * 1000);
-}
-
-function getFontSize(text) {
-  const numChars = text.length;
-  if (numChars > 30) return "4rem";
-  if (numChars > 20) return "6rem";
-  if (numChars > 12) return "8rem";
-  return "10rem";
 }
 
 function fadeInAudio(audioEl) {
