@@ -1,8 +1,11 @@
 /// CONSTANTS
 
-const msToShowSongInfo = 10000;
+const msToShowSongInfo = 5000;
 const msToShowIntermission = 8000;
 const msVideoFade = 2000;
+const msFlierSlide = 2000;
+
+const karaokeLyricsColors = ["#7a54b1", "#ff0000", "#ffff00", "#000"];
 
 const videoFiles = shuffle([
   "videos/market.mp4",
@@ -118,6 +121,10 @@ async function playSong(song) {
     lyricsEl.innerText = text;
     lyricsEl.setAttribute("data-text", text);
     lyricsEl.style.setProperty("--karaoke-line-duration", `${duration}s`);
+    document.documentElement.style.setProperty(
+      "--karaoke-lyrics-color",
+      choice(karaokeLyricsColors)
+    );
 
     lyricsWrapperEl.appendChild(lyricsEl);
     await delaySeconds(duration);
@@ -141,10 +148,10 @@ function hydrateSongInfo(song) {
 
 function getLyricsFontSize(text) {
   const numChars = text.length;
-  if (numChars > 30) return "4rem";
-  if (numChars > 20) return "6rem";
-  if (numChars > 12) return "8rem";
-  return "10rem";
+  if (numChars > 30) return "6rem";
+  if (numChars > 20) return "8rem";
+  if (numChars > 12) return "10rem";
+  return "12rem";
 }
 
 /// Intermission
@@ -163,18 +170,22 @@ async function animateIntermissionIn() {
     "slideInFromBottom",
   ];
   const idleAnimations = ["pulse", "bounce", "spin", "shake"];
+  const slideAnim = choice(slideInAnimations);
 
   flierEl.style.display = "none";
   intermissionBg.style.opacity = 1;
   intermissionBg.style.display = "block";
-  intermissionBg.style.animation = `fadeIn 0.5s ease, scaleInGentle 0.8s ease`;
+  intermissionBg.style.animation = `fadeIn 0.7s ease, ${slideAnim} 1s ease`;
   await delay(500);
 
   flierEl.style.display = "block";
-  flierEl.style.animation = `${choice(slideInAnimations)} 2s ease`;
-  await delay(2000);
+  flierEl.style.animation = `${slideAnim} ${msFlierSlide}ms ease`;
+  await delay(msFlierSlide);
 
-  flierEl.style.animation = `${choice(idleAnimations)} 2s ease infinite`;
+  flierEl.style.animation = `${choice(idleAnimations)} ${randomInt(
+    1000,
+    4000
+  )}ms ease infinite`;
 }
 
 async function animateIntermissionOut() {
@@ -184,14 +195,15 @@ async function animateIntermissionOut() {
     "slideOutToTop",
     "slideOutToBottom",
   ];
+  const slideAnim = choice(slideOutAnimations);
 
-  flierEl.style.animation = `${choice(slideOutAnimations)} 2s ease`;
+  flierEl.style.animation = `${slideAnim} 2s ease`;
   setTimeout(() => {
     intermissionBg.style.opacity = 0;
-    intermissionBg.style.animation = `fadeOut 0.5s ease, scaleOutGentle 0.5s ease`;
+    intermissionBg.style.animation = `fadeOut 0.7s ease, ${slideAnim} 1s ease`;
   }, 500);
 
-  await delay(2000);
+  await delay(msFlierSlide);
   flierEl.style.display = "none";
 }
 
@@ -238,8 +250,8 @@ function playVideoLoop() {
     nextEls.forEach((el) => loadVideoOntoElement(el, nextVideoFile));
 
     // delay until it is time to fade out
-    const { duration } = videoMetadataMap[videoFile];
-    await delay(duration * 1000 - msVideoFade * 2);
+    const durationMs = videoMetadataMap[videoFile].duration * 1000;
+    await delay(durationMs - msVideoFade * 2);
 
     // fade out the current video
     curEls.forEach(fadeOutVideo);
@@ -274,15 +286,14 @@ async function playVideo(bgVideoEl, fgVideoEl, videoFile) {
   const { duration, isVertical } = videoMetadataMap[videoFile];
 
   if (isVertical) {
-    console.log("ok playing vertical video", videoFile, duration);
-    fgVideoEl.style.display = "block";
-    fgVideoEl.play();
+    fgVideoEl.classList.add("vertical");
   } else {
-    fgVideoEl.style.display = "none";
+    fgVideoEl.classList.remove("vertical");
   }
 
-  console.log("ok playing bg video", videoFile, duration);
+  console.log("ok playing video", videoFile, duration);
   bgVideoEl.play();
+  fgVideoEl.play();
 }
 
 /// UTILS
@@ -291,12 +302,22 @@ function choice(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
 function shuffle(items) {
   return items.sort(() => Math.random() - 0.5);
 }
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function delayFromTotal(totalMs, delayMs) {
+  return new Promise((resolve) =>
+    setTimeout(() => resolve(totalMs - delayMs), delayMs)
+  );
 }
 
 function delaySeconds(s) {

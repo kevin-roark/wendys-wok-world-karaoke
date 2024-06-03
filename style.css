@@ -1,5 +1,6 @@
 :root {
   --theme-bg: #7a54b1;
+  --karaoke-lyrics-color: #ffff00;
 }
 
 body {
@@ -40,16 +41,23 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 88vh;
-  max-width: 80vw;
   box-shadow: 0 25px 50px 12px rgb(0 0 0 / 0.5);
   border-radius: 16px;
+}
+.video-fg:not(.vertical) {
+  max-height: 88vh;
+  width: 72vw;
+}
+.video-fg.vertical {
+  height: 88vh;
+  max-width: 72vw;
 }
 
 #songInfo {
   position: fixed;
-  top: 20px;
-  right: 24px;
+  left: 0;
+  top: 0;
+  transform: translate(calc(100vw - 100% - 24px), calc(20px));
   text-align: right;
   max-width: 80vw;
   font-size: 2rem;
@@ -109,20 +117,20 @@ body {
   left: 0;
   top: 0;
   overflow: hidden;
-  color: yellow;
-  text-shadow: 0 0 8px yellow;
+  color: var(--karaoke-lyrics-color);
+  text-shadow: 0 0 8px var(--karaoke-lyrics-color);
   animation: karaoke-text var(--karaoke-line-duration) infinite linear;
 }
 
 #intermission-bg {
   position: fixed;
-  top: 50px;
-  left: 50px;
-  width: calc(100vw - 100px);
-  height: calc(100vh - 100px);
+  top: calc(50% - 573px);
+  left: calc(50% - 480px);
+  width: 960px;
+  height: 1146px;
   z-index: 1;
   background-color: var(--theme-bg);
-  box-shadow: 0 0 25px 5px rgb(0 0 0 / 0.1), 0 0 10px 6px rgb(0 0 0 / 0.1);
+  box-shadow: 0 25px 50px 12px rgb(0 0 0 / 0.5);
   border-radius: 16px;
 }
 
@@ -140,7 +148,7 @@ body {
 
 #flier-image {
   width: 720px;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  box-shadow: 0 25px 50px 12px rgb(0 0 0 / 0.25);
   border-radius: 16px;
   border: 2px solid #4e3856;
   animation: bounce 2s infinite ease;
@@ -229,7 +237,7 @@ body {
 
 @keyframes slideInFromLeft {
   from {
-    transform: translate(-200%, 0);
+    transform: translate(-250%, 0);
   }
   to {
     transform: none;
@@ -241,13 +249,13 @@ body {
     transform: none;
   }
   to {
-    transform: translate(-200%, 0);
+    transform: translate(-250%, 0);
   }
 }
 
 @keyframes slideInFromRight {
   from {
-    transform: translate(200%);
+    transform: translate(250%);
   }
   to {
     transform: none;
@@ -259,13 +267,13 @@ body {
     transform: none;
   }
   to {
-    transform: translate(200%, 0);
+    transform: translate(250%, 0);
   }
 }
 
 @keyframes slideInFromTop {
   from {
-    transform: translate(0, -200%);
+    transform: translate(0, -250%);
   }
   to {
     transform: none;
@@ -277,13 +285,13 @@ body {
     transform: none;
   }
   to {
-    transform: translate(0, -200%);
+    transform: translate(0, -250%);
   }
 }
 
 @keyframes slideInFromBottom {
   from {
-    transform: translate(0, 200%);
+    transform: translate(0, 250%);
   }
   to {
     transform: none;
@@ -295,7 +303,7 @@ body {
     transform: none;
   }
   to {
-    transform: translate(0, 200%);
+    transform: translate(0, 250%);
   }
 }
 
