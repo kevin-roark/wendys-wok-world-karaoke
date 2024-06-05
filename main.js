@@ -6,6 +6,7 @@ const msVideoFade = 2000;
 const msFlierSlide = 2000;
 
 const karaokeLyricsColors = ["#7a54b1", "#ff0000", "#ffff00", "#000"];
+const chooseRandomLyricsColors = false;
 
 const videoFiles = shuffle([
   "videos/market.mp4",
@@ -33,6 +34,17 @@ const songs = [
   "json/18_mobile.json",
   "json/19_numb.json",
   "json/20_mr-brightside.json",
+];
+
+const wendyKeywords = [
+  "purity",
+  "rigidity",
+  "discipline",
+  "authority",
+  "control",
+  "precision",
+  "restraint",
+  "strive",
 ];
 
 /// SETUP
@@ -118,13 +130,26 @@ async function playSong(song) {
     lyricsEl.parentNode.removeChild(lyricsEl);
 
     lyricsEl.style.fontSize = getLyricsFontSize(text);
-    lyricsEl.innerText = text;
+
+    const words = text.split(" ");
+    const spans = words.map((word) => {
+      const isKeyword = wendyKeywords.includes(word.toLowerCase());
+      return isKeyword
+        ? `<span class="wendy-keyword">${word}</span>`
+        : `<span>${word}</span>`;
+    });
+    lyricsEl.innerHTML = spans.join(" ");
+
     lyricsEl.setAttribute("data-text", text);
+
     lyricsEl.style.setProperty("--karaoke-line-duration", `${duration}s`);
-    document.documentElement.style.setProperty(
-      "--karaoke-lyrics-color",
-      choice(karaokeLyricsColors)
-    );
+
+    if (chooseRandomLyricsColors) {
+      document.documentElement.style.setProperty(
+        "--karaoke-lyrics-color",
+        choice(karaokeLyricsColors)
+      );
+    }
 
     lyricsWrapperEl.appendChild(lyricsEl);
     await delaySeconds(duration);
