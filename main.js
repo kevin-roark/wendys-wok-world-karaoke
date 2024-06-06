@@ -8,9 +8,18 @@ const msFlierSlide = 2000;
 const karaokeLyricsColors = ["#7a54b1", "#ff0000", "#ffff00", "#000"];
 const chooseRandomLyricsColors = false;
 
+const showForegroundVideos = false;
+const tileVerticalVideos = true;
+const fitVerticalVideos = true;
+const tileHorizontalVideos = true;
+const fitHorizontalVideos = false;
+let maxTileWidth = 2048;
+let maxTileHeight = 900;
+
 const videoFiles = shuffle([
-  "videos/market.mp4",
   ...Array.from({ length: 34 }, (_, i) => `videos/video_${i + 1}.mp4`),
+  // "videos/video_1.mp4",
+  // "videos/video_3.mp4",
 ]);
 
 const songs = [
@@ -55,10 +64,12 @@ const videoEls = [
   {
     bg: document.getElementById("video1Bg"),
     fg: document.getElementById("video1Fg"),
+    canvas: document.getElementById("video1Canvas"),
   },
   {
     bg: document.getElementById("video2Bg"),
     fg: document.getElementById("video2Fg"),
+    canvas: document.getElementById("video2Canvas"),
   },
 ];
 const songInfoEl = document.getElementById("songInfo");
@@ -81,6 +92,7 @@ Promise.all(songs.map((song) => fetch(song).then((res) => res.json()))).then(
 );
 
 const videoMetadataMap = {};
+const videoElActiveVideoFileMap = {};
 
 let hasStarted = false;
 let currentVideoIndex = 0;
@@ -99,6 +111,18 @@ async function start() {
 
   playSongLoop();
 }
+
+/// RESIZE
+
+function onResize() {
+  videoEls.forEach(({ canvas }) => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
+
+window.addEventListener("resize", onResize);
+onResize();
 
 /// SONGS
 
@@ -121,7 +145,7 @@ async function playSong(song) {
   // set up the karaoke lyrics
   const initialDelay = song.scripts[0].start;
   console.log("starting to play", song.ti, "with initial delay", initialDelay);
-  await delaySeconds(song.scripts[0].start, initialDelay);
+  // await delaySeconds(song.scripts[0].start, initialDelay);
 
   for (const line of song.scripts) {
     const { start, text, end } = line;
@@ -236,11 +260,12 @@ async function animateIntermissionOut() {
 
 function playVideoLoop() {
   // intialize the video elements
-  videoEls.forEach(({ bg, fg }) => {
+  videoEls.forEach(({ bg, fg, canvas }) => {
     bg.muted = true;
     fg.muted = true;
     bg.style.opacity = 0;
     fg.style.opacity = 0;
+    canvas.style.opacity = 0;
   });
   loadVideoOntoElement(videoEls[0].bg, videoFiles[0]);
   loadVideoOntoElement(videoEls[0].fg, videoFiles[0]);
@@ -250,10 +275,14 @@ function playVideoLoop() {
   async function playNextVideo() {
     // choose video file, start playing it, fade in the video
     const videoFile = videoFiles[currentVideoIndex];
-    const { bg: bgVideoEl, fg: fgVideoEl } = videoEls[currentVideoElIndex];
-    const curEls = [bgVideoEl, fgVideoEl];
-    curEls.forEach(fadeInVideo);
-    await playVideo(bgVideoEl, fgVideoEl, videoFile);
+    const {
+      bg: bgVideoEl,
+      fg: fgVideoEl,
+      canvas: canvasEl,
+    } = videoEls[currentVideoElIndex];
+    const curEls = [bgVideoEl, fgVideoEl, canvasEl];
+    curEls.forEach(fadeInElement);
+    await playVideo(bgVideoEl, fgVideoEl, canvasEl, videoFile);
 
     // don't load the next video until we are done fading out the current video
     await delay(msVideoFade);
@@ -271,15 +300,15 @@ function playVideoLoop() {
     currentVideoElIndex = (currentVideoElIndex + 1) % videoEls.length;
     const { bg: nextBgVideoEl, fg: nextFgVideoEl } =
       videoEls[currentVideoElIndex];
-    const nextEls = [nextBgVideoEl, nextFgVideoEl];
-    nextEls.forEach((el) => loadVideoOntoElement(el, nextVideoFile));
+    const nextVideoEls = [nextBgVideoEl, nextFgVideoEl];
+    nextVideoEls.forEach((el) => loadVideoOntoElement(el, nextVideoFile));
 
     // delay until it is time to fade out
     const durationMs = videoMetadataMap[videoFile].duration * 1000;
     await delay(durationMs - msVideoFade * 2);
 
     // fade out the current video
-    curEls.forEach(fadeOutVideo);
+    curEls.forEach(fadeOutElement);
 
     // play the next video, which will be faded in
     playNextVideo();
@@ -305,20 +334,74 @@ function loadVideoOntoElement(videoEl, videoFile) {
   };
 }
 
+function setupVideoTileCanvas(videoEl, canvas, videoFile) {
+  const ctx = canvas.getContext("2d");
+
+  function step() {
+    // have to know when to quit...
+    const active = videoElActiveVideoFileMap[videoEl.id] === videoFile;
+    if (!active) {
+      console.log("stopping video tile canvas for", videoFile);
+      return;
+    }
+
+    // background :)
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // calculate number of tiles required and draw the video onto the canvas X * Y times
+    const metadata = videoMetadataMap[videoFile];
+    let [vWidth, vHeight] = [metadata.width, metadata.height];
+    if (!metadata.isVertical && vWidth > maxTileWidth) {
+      vHeight = (vHeight / vWidth) * maxTileWidth;
+      vWidth = maxTileWidth;
+    } else if (metadata.isVertical && vHeight > maxTileHeight) {
+      vWidth = (vWidth / vHeight) * maxTileHeight;
+      vHeight = maxTileHeight;
+    }
+
+    const xTiles = Math.ceil(canvas.width / vWidth) || 1;
+    const yTiles = Math.ceil(canvas.height / vHeight) || 1;
+    for (let i = 0; i < xTiles; i++) {
+      for (let j = 0; j < yTiles; j++) {
+        ctx.drawImage(videoEl, i * vWidth, j * vHeight, vWidth, vHeight);
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
 // we do a nice vertical video overlaid onto bg cover-fit of same video effect :)
-async function playVideo(bgVideoEl, fgVideoEl, videoFile) {
+async function playVideo(bgVideoEl, fgVideoEl, canvasEl, videoFile) {
   await waitForVideoMetadata(videoFile);
   const { duration, isVertical } = videoMetadataMap[videoFile];
 
-  if (isVertical) {
-    fgVideoEl.classList.add("vertical");
-  } else {
-    fgVideoEl.classList.remove("vertical");
+  videoElActiveVideoFileMap[bgVideoEl.id] = videoFile;
+  videoElActiveVideoFileMap[fgVideoEl.id] = videoFile;
+
+  const shouldTile = isVertical ? tileVerticalVideos : tileHorizontalVideos;
+  if (shouldTile) {
+    setupVideoTileCanvas(bgVideoEl, canvasEl, videoFile);
   }
+
+  const shouldFit = isVertical ? fitVerticalVideos : fitHorizontalVideos;
+  bgVideoEl.style.objectFit = shouldFit ? "contain" : "cover";
 
   console.log("ok playing video", videoFile, duration);
   bgVideoEl.play();
-  fgVideoEl.play();
+
+  if (showForegroundVideos) {
+    if (isVertical) {
+      fgVideoEl.classList.add("vertical");
+    } else {
+      fgVideoEl.classList.remove("vertical");
+    }
+
+    fgVideoEl.play();
+  }
 }
 
 /// UTILS
@@ -369,15 +452,15 @@ function fadeOutAudio(audioEl) {
   }, interval);
 }
 
-async function fadeInVideo(videoEl) {
-  videoEl.style.opacity = 1;
-  videoEl.style.animation = `fadeIn ${msVideoFade}ms`;
+async function fadeInElement(el) {
+  el.style.opacity = 1;
+  el.style.animation = `fadeIn ${msVideoFade}ms`;
   await delay(msVideoFade);
 }
 
-async function fadeOutVideo(videoEl) {
-  videoEl.style.opacity = 0;
-  videoEl.style.animation = `fadeOut ${msVideoFade}ms`;
+async function fadeOutElement(el) {
+  el.style.opacity = 0;
+  el.style.animation = `fadeOut ${msVideoFade}ms`;
   await delay(msVideoFade);
 }
 

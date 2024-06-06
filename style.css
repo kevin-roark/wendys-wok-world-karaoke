@@ -43,6 +43,7 @@ body {
   transform: translate(-50%, -50%);
   box-shadow: 0 25px 50px 12px rgb(0 0 0 / 0.5);
   border-radius: 16px;
+  display: none;
 }
 .video-fg:not(.vertical) {
   max-height: 88vh;
@@ -51,6 +52,14 @@ body {
 .video-fg.vertical {
   height: 88vh;
   max-width: 72vw;
+}
+
+.video-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 #songInfo {
