@@ -20,6 +20,7 @@ const videoFiles = shuffle([
   ...Array.from({ length: 34 }, (_, i) => `videos/video_${i + 1}.mp4`),
   // "videos/video_1.mp4",
   // "videos/video_3.mp4",
+  // "videos/video_26.mp4",
 ]);
 
 const songs = [
