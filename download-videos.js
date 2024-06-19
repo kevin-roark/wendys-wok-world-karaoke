@@ -18,7 +18,7 @@ const videoUrls = [
   },
   {
     title: "Successful - Drake",
-    audioUrl: "https://www.youtube.com/watch?v=j5DySYu5Bfw",
+    audioUrl: "https://www.youtube.com/watch?v=s_IATuze-R0",
   },
   {
     title: "Dont Stop Me now - Queen",
@@ -114,10 +114,10 @@ async function main() {
         downloadAndConvertVideo(karaokeUrl, titleNumber, cleanTitle),
 
       // download the best m4a audio available, or the best audio available if no m4a audio is available
-      // audioUrl &&
-      //   exec(
-      //     `yt-dlp -f "ba[ext=m4a]/ba" "${audioUrl}" -o "youtube-videos/${titleNumber}_${cleanTitle}_audio.%(ext)s"`
-      //   ).catch((e) => console.error(e)),
+      audioUrl &&
+        exec(
+          `yt-dlp -f "ba[ext=m4a]/ba" "${audioUrl}" -o "youtube-videos/${titleNumber}_${cleanTitle}_audio.%(ext)s"`
+        ).catch((e) => console.error(e)),
     ]);
   }
 }

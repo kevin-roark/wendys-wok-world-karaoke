@@ -2,6 +2,7 @@
   "id": "airdiuqn",
   "ti": "See You Again",
   "ar": "Tyler, The Creator",
+  "length": "03:23",
   "scripts": [
     {
       "start": 0.19,
@@ -96,11 +97,6 @@
     {
       "start": 45.9,
       "text": "I can only see your face when I close my eyes ",
-      "end": 50.13
-    },
-    {
-      "start": 50.13,
-      "text": "Kali Uchis/Tyler, The Creator： ",
       "end": 51.36
     },
     {
@@ -161,11 +157,6 @@
     {
       "start": 74.75,
       "text": "Ugh switch it up ",
-      "end": 75.61
-    },
-    {
-      "start": 75.61,
-      "text": "Tyler, The Creator： ",
       "end": 76.05
     },
     {
@@ -266,11 +257,6 @@
     {
       "start": 124.21,
       "text": "So ",
-      "end": 124.63
-    },
-    {
-      "start": 124.63,
-      "text": "Kali Uchis： ",
       "end": 124.91
     },
     {
@@ -346,11 +332,6 @@
     {
       "start": 145.38,
       "text": "And I don't know if I'ma see you again ",
-      "end": 148.28
-    },
-    {
-      "start": 148.28,
-      "text": "Tyler, The Creator/Kali Uchis： ",
       "end": 149.81
     },
     {

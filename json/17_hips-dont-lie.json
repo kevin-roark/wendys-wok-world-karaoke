@@ -1,322 +1,439 @@
 {
-  "id": "upvkpqfg",
-  "ti": "Hips don't lie",
+  "id": "obwcupks",
   "ar": "Shakira",
+  "ti": "Hips Don't Lie",
+  "al": "Oral Fixation, Vol. 2 (Expanded Edition)",
+  "length": "03:40",
   "scripts": [
     {
-      "start": 3.15,
+      "start": 0.04,
       "text": "Ladies up in here tonight",
-      "end": 4.64
+      "end": 2.16
     },
     {
-      "start": 4.64,
-      "text": "No fighting, no fighting",
-      "end": 6.53
+      "start": 2.16,
+      "text": "No fighting",
+      "end": 4.01
     },
     {
-      "start": 6.53,
-      "text": "We got the refugees up in here",
-      "end": 7.76
+      "start": 4.01,
+      "text": "We got the refugees up in here (no fighting)",
+      "end": 6.96
     },
     {
-      "start": 7.76,
-      "text": "No fighting. no fighting",
-      "end": 9.29
+      "start": 6.96,
+      "text": "No fighting",
+      "end": 8.08
     },
     {
-      "start": 9.29,
-      "text": "[00:20.34][01:08.14][01:37.36][02:13.27]Shakira, Shakira",
-      "end": 11.77
+      "start": 8.08,
+      "text": "Shakira, Shakira",
+      "end": 9.66
     },
     {
-      "start": 11.77,
-      "text": "[00:59.46][02:06.64]I never really knew that she could dance like this",
-      "end": 14.1
+      "start": 9.66,
+      "text": "I never really knew that she could dance like this",
+      "end": 12.05
     },
     {
-      "start": 14.1,
-      "text": "She makes a man wants to speak Spanish",
-      "end": 16.64
+      "start": 12.05,
+      "text": "She make a man want to speak spanish",
+      "end": 14.73
     },
     {
-      "start": 16.64,
-      "text": "[01:04.14][02:11.72]Como se llama,si, bonita,si, mi casa, su casa",
-      "end": 21.7
+      "start": 14.73,
+      "text": "¿Cómo se llama? (Sí), bonita (sí)",
+      "end": 17.44
     },
     {
-      "start": 21.7,
-      "text": "[01:09.38][02:16.48]Oh baby when you talk like that",
-      "end": 23.8
+      "start": 17.44,
+      "text": "Mi casa, su casa (Shakira, Shakira)",
+      "end": 19.51
     },
     {
-      "start": 23.8,
-      "text": "[01:11.80]You make a woman go mad",
-      "end": 26.3
+      "start": 19.51,
+      "text": "Oh, baby, when you talk like that",
+      "end": 22.08
     },
     {
-      "start": 26.3,
-      "text": "[01:14.08][02:21.60]So be wise and keep on",
-      "end": 28.54
+      "start": 22.08,
+      "text": "You make a woman go mad",
+      "end": 24.34
     },
     {
-      "start": 28.54,
-      "text": "[01:17.14][02:24.76]Reading the signs of my body",
-      "end": 30.91
+      "start": 24.34,
+      "text": "So be wise (sí) and keep on (sí)",
+      "end": 26.59
     },
     {
-      "start": 30.91,
-      "text": "I'm on tonight my hips dont lie,",
-      "end": 33.72
+      "start": 26.59,
+      "text": "Reading the signs of my body (uno, dos, tres, cuatro)",
+      "end": 29.33
     },
     {
-      "start": 33.72,
-      "text": "I'm starting to feel it's right",
-      "end": 35.72
+      "start": 29.33,
+      "text": "I'm on tonight, you know my hips don't lie",
+      "end": 32.38
     },
     {
-      "start": 35.72,
-      "text": "[01:33.32]All the attraction, the tension",
-      "end": 38.73
+      "start": 32.38,
+      "text": "And I'm starting to feel it's right",
+      "end": 33.91
     },
     {
-      "start": 38.73,
-      "text": "[01:35.61]Don't you see baby, this is perfection",
-      "end": 40.71
+      "start": 33.91,
+      "text": "All the attraction, the tension",
+      "end": 36.36
     },
     {
-      "start": 40.71,
-      "text": "Hey Girl, I can see your body moving",
+      "start": 36.36,
+      "text": "Don't you see, baby? This is perfection",
+      "end": 38.95
+    },
+    {
+      "start": 38.95,
+      "text": "Hey, girl, I can see your body moving",
+      "end": 41.96
+    },
+    {
+      "start": 41.96,
+      "text": "And it's driving me crazy",
       "end": 43.52
     },
     {
       "start": 43.52,
-      "text": "And it's driving me crazy",
-      "end": 45.28
-    },
-    {
-      "start": 45.28,
       "text": "And I didn't have the slightest idea",
-      "end": 48.37
+      "end": 46.45
     },
     {
-      "start": 48.37,
+      "start": 46.45,
       "text": "Until I saw you dancing",
-      "end": 50.06
+      "end": 48.33
     },
     {
-      "start": 50.06,
-      "text": "And when you walk up on the dance floor",
-      "end": 52.27
+      "start": 48.33,
+      "text": "And when you walk up on the dance floor nobody cannot",
+      "end": 50.63
     },
     {
-      "start": 52.27,
-      "text": "Nobody cannot ignore the way you move your body, girl",
+      "start": 50.63,
+      "text": "Ignore the way you move your body, girl (your body just move)",
+      "end": 53.14
+    },
+    {
+      "start": 53.14,
+      "text": "And everything's so unexpected",
       "end": 54.5
     },
     {
       "start": 54.5,
-      "text": "And everything so unexpected - the way you right and left it",
-      "end": 57.39
+      "text": "The way you right and left it",
+      "end": 56.3
     },
     {
-      "start": 57.39,
-      "text": "So you can keep on taking it",
-      "end": 62.15
+      "start": 56.3,
+      "text": "So you can keep on shaking it (let's go!)",
+      "end": 57.61
     },
     {
-      "start": 62.15,
-      "text": "[02:09.66]She makes a man want to speak Spanish",
-      "end": 78.95
+      "start": 57.61,
+      "text": "I never really knew that she could dance like this",
+      "end": 60.32
     },
     {
-      "start": 78.95,
-      "text": "I'm on tonight",
-      "end": 80.69
+      "start": 60.32,
+      "text": "She make a man want to speak spanish",
+      "end": 62.53
     },
     {
-      "start": 80.69,
-      "text": "You know my hips don't lie",
-      "end": 82.08
+      "start": 62.53,
+      "text": "¿Cómo se llama? (Sí), bonita (sí)",
+      "end": 65.39
     },
     {
-      "start": 82.08,
-      "text": "And I am starting to feel you boy",
-      "end": 83.6
+      "start": 65.39,
+      "text": "Mi casa, su casa (Shakira, Shakira)",
+      "end": 67.58
     },
     {
-      "start": 83.6,
-      "text": "Come on lets go, real slow",
-      "end": 86.09
+      "start": 67.58,
+      "text": "Oh, baby, when you talk like that",
+      "end": 70.27
     },
     {
-      "start": 86.09,
-      "text": "Don't you see baby asi es perfecto",
-      "end": 88.49
+      "start": 70.27,
+      "text": "You make a woman go mad",
+      "end": 72.56
     },
     {
-      "start": 88.49,
-      "text": "Oh I know I am on tonight my hips don't lie",
-      "end": 91.46
+      "start": 72.56,
+      "text": "So be wise (sí) and keep on (sí)",
+      "end": 75.1
     },
     {
-      "start": 91.46,
-      "text": "[03:19.91]And I am starting to feel it's right",
-      "end": 98.37
+      "start": 75.1,
+      "text": "Reading the signs of my body (no fighting, no fighting)",
+      "end": 77.84
     },
     {
-      "start": 98.37,
-      "text": "Oh boy, I can see your body moving",
-      "end": 101.13
+      "start": 77.84,
+      "text": "I'm on tonight, you know my hips don't lie",
+      "end": 80.24
     },
     {
-      "start": 101.13,
+      "start": 80.24,
+      "text": "And I'm starting to feel you, boy",
+      "end": 81.86
+    },
+    {
+      "start": 81.86,
+      "text": "Come on, let's go, real slow",
+      "end": 84.59
+    },
+    {
+      "start": 84.59,
+      "text": "Don't you see, baby? Así es perfecto",
+      "end": 86.78
+    },
+    {
+      "start": 86.78,
+      "text": "Baby, I know I'm on tonight, my hips don't lie",
+      "end": 89.8
+    },
+    {
+      "start": 89.8,
+      "text": "And I'm starting to feel it's right",
+      "end": 91.59
+    },
+    {
+      "start": 91.59,
+      "text": "All the attraction, the tension",
+      "end": 93.86
+    },
+    {
+      "start": 93.86,
+      "text": "Don't you see, baby? This is perfection (Shakira, Shakira)",
+      "end": 96.24
+    },
+    {
+      "start": 96.24,
+      "text": "Oh, boy, I can see your body moving",
+      "end": 99.29
+    },
+    {
+      "start": 99.29,
       "text": "Half animal, half man",
-      "end": 102.88
+      "end": 101.39
     },
     {
-      "start": 102.88,
+      "start": 101.39,
       "text": "I don't, don't really know what I'm doing",
-      "end": 105.34
+      "end": 104.23
     },
     {
-      "start": 105.34,
+      "start": 104.23,
       "text": "But you seem to have a plan",
-      "end": 107.7
+      "end": 105.9
     },
     {
-      "start": 107.7,
-      "text": "My will and self restraint",
-      "end": 109.88
+      "start": 105.9,
+      "text": "My will and self-restraint",
+      "end": 108.26
     },
     {
-      "start": 109.88,
+      "start": 108.26,
       "text": "Have come to fail now, fail now",
-      "end": 112.16
+      "end": 110.69
     },
     {
-      "start": 112.16,
-      "text": "See, I am doing what I can, but I can't so you know",
-      "end": 115.11
+      "start": 110.69,
+      "text": "See, I'm doing what I can, but I can't, so you know",
+      "end": 113.07
     },
     {
-      "start": 115.11,
-      "text": "That's a bit too hard to explain",
-      "end": 117.34
+      "start": 113.07,
+      "text": "That's a bit too hard to explain (uno, dos, tres, cuatro)",
+      "end": 115.49
     },
     {
-      "start": 117.34,
-      "text": "[02:02.16]Baila en la calle de noche",
-      "end": 135.34
+      "start": 115.49,
+      "text": "Baila en la calle de noche",
+      "end": 118.24
     },
     {
-      "start": 135.34,
-      "text": ".Lyrics Synchronized By :: P@rth Gohel",
-      "end": 139.2
+      "start": 118.24,
+      "text": "Baila en la calle de día (let's go!)",
+      "end": 120.6
     },
     {
-      "start": 139.2,
+      "start": 120.6,
+      "text": "Baila en la calle de noche",
+      "end": 122.91
+    },
+    {
+      "start": 122.91,
+      "text": "Baila en la calle de día",
+      "end": 124.59
+    },
+    {
+      "start": 124.59,
+      "text": "I never really knew that she could dance like this",
+      "end": 127.41
+    },
+    {
+      "start": 127.41,
+      "text": "She make a man want to speak spanish",
+      "end": 129.82
+    },
+    {
+      "start": 129.82,
+      "text": "¿Cómo se llama? (Sí), bonita (sí)",
+      "end": 132.5
+    },
+    {
+      "start": 132.5,
+      "text": "Mi casa, su casa (Shakira, Shakira)",
+      "end": 134.93
+    },
+    {
+      "start": 134.93,
+      "text": "Oh, baby, when you talk like that",
+      "end": 137.16
+    },
+    {
+      "start": 137.16,
       "text": "You know you got me hypnotized",
-      "end": 146.18
+      "end": 139.6
     },
     {
-      "start": 146.18,
-      "text": "Señorita, feel the conga, let me see you move like you come from Colombia",
-      "end": 158.74
+      "start": 139.6,
+      "text": "So be wise (sí) and keep on (sí)",
+      "end": 142.22
     },
     {
-      "start": 158.74,
-      "text": "Mira en Barranquilla se baila así, si!",
-      "end": 160.54
+      "start": 142.22,
+      "text": "Reading the signs of my body",
+      "end": 144.12
     },
     {
-      "start": 160.54,
-      "text": "Mira en Barranquilla se baila así",
-      "end": 162.89
+      "start": 144.12,
+      "text": "Señorita, feel the conga",
+      "end": 146.45
     },
     {
-      "start": 162.89,
-      "text": "Yeah",
-      "end": 167.14
+      "start": 146.45,
+      "text": "Let me see you move like you come from Colombia",
+      "end": 149.83
     },
     {
-      "start": 167.14,
-      "text": "She's so sexy every man's fantasy a refugee like me back with the Fugees from a 3rd world country",
-      "end": 172.31
+      "start": 149.83,
+      "text": "Yeah, oh, yeah, ladies, sí! (Yeah, yeah, hey, yeah)",
+      "end": 156.36
     },
     {
-      "start": 172.31,
-      "text": "I go back like when 'pac carried crates for Humpty Humpty",
-      "end": 175.56
+      "start": 156.36,
+      "text": "Mira, en Barranquilla se baila así, say it!",
+      "end": 159.1
     },
     {
-      "start": 175.56,
-      "text": "I need a whole club dizzy",
-      "end": 176.98
+      "start": 159.1,
+      "text": "En Barranquilla se baila así",
+      "end": 162.92
     },
     {
-      "start": 176.98,
+      "start": 165.19,
+      "text": "Yeah, she's so sexy, every man's fantasy",
+      "end": 167.55
+    },
+    {
+      "start": 167.55,
+      "text": "A refugee like me back with the Fugees from a Third World country",
+      "end": 170.68
+    },
+    {
+      "start": 170.68,
+      "text": "I go back like when Pac carried crates for Humpty Hump",
+      "end": 173.69
+    },
+    {
+      "start": 173.69,
+      "text": "We lead a whole club jazzy",
+      "end": 175.15
+    },
+    {
+      "start": 175.15,
       "text": "Why the CIA wanna watch us?",
-      "end": 178.8
+      "end": 176.84
     },
     {
-      "start": 178.8,
+      "start": 176.84,
       "text": "Colombians and Haitians",
-      "end": 180.24
+      "end": 178.14
     },
     {
-      "start": 180.24,
+      "start": 178.14,
       "text": "I ain't guilty, it's a musical transaction",
-      "end": 182.75
+      "end": 180.04
     },
     {
-      "start": 182.75,
-      "text": "Boo-boop-so-boop",
-      "end": 183.7
+      "start": 180.04,
+      "text": "Boo-boop-so-boop, no more do we snatch ropes",
+      "end": 182.14
     },
     {
-      "start": 183.7,
-      "text": "No more do we snatch ropes",
-      "end": 184.44
+      "start": 182.14,
+      "text": "Refugees run the seas 'cause we own our own boats (no fighting)",
+      "end": 185.38
     },
     {
-      "start": 184.44,
-      "text": "Refugees run the seas 'cause we own our own boats",
-      "end": 187.2
-    },
-    {
-      "start": 187.2,
+      "start": 185.38,
       "text": "I'm on tonight, my hips don't lie",
-      "end": 190.21
+      "end": 188.24
     },
     {
-      "start": 190.21,
-      "text": "And I'm starting to feel you boy",
-      "end": 191.75
+      "start": 188.24,
+      "text": "And I'm starting to feel you, boy",
+      "end": 189.81
     },
     {
-      "start": 191.75,
-      "text": "Come on let's go, real slow",
-      "end": 194.09
+      "start": 189.81,
+      "text": "Come on, let's go, real slow",
+      "end": 192.17
     },
     {
-      "start": 194.09,
-      "text": "Baby, like this is perfecto",
-      "end": 196.92
+      "start": 192.17,
+      "text": "Baby, like this is perfecto (no fighting)",
+      "end": 194.82
     },
     {
-      "start": 196.92,
-      "text": "Oh, you know I am on tonight and my hips don't lie",
-      "end": 201.35
+      "start": 194.82,
+      "text": "Oh, you know I'm on tonight, my hips don't lie",
+      "end": 197.82
     },
     {
-      "start": 201.35,
+      "start": 197.82,
+      "text": "And I'm starting to feel it's right",
+      "end": 199.44
+    },
+    {
+      "start": 199.44,
       "text": "The attraction, the tension",
-      "end": 203.72
+      "end": 201.96
     },
     {
-      "start": 203.72,
+      "start": 201.96,
       "text": "Baby, like this is perfection",
-      "end": 206.76
+      "end": 206.17
+    },
+    {
+      "start": 206.17,
+      "text": "No fighting (no fighting, no fighting)",
+      "end": 208.69
+    },
+    {
+      "start": 208.69,
+      "text": "No fighting",
+      "end": 210.03
     }
   ]
 }

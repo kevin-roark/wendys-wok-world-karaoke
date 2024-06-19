@@ -5,22 +5,8 @@
   "ti": "Love The Way You Lie",
   "au": "H. Hafferman",
   "by": "【ϣ.є】ツ™",
+  "length": "04:27",
   "scripts": [
-    {
-      "start": 0,
-      "text": "Sync by【ϣ.є】ツ™",
-      "end": 0
-    },
-    {
-      "start": 0,
-      "text": " ",
-      "end": 0
-    },
-    {
-      "start": 0,
-      "text": "(Chorus: Rihanna)",
-      "end": 0
-    },
     {
       "start": 0,
       "text": "Just gonna stand there and watch me burn?",
@@ -53,11 +39,6 @@
     },
     {
       "start": 24.99,
-      "text": "(Verse 1: Eminem)",
-      "end": 24.992
-    },
-    {
-      "start": 24.992,
       "text": "I can't tell you what it really is, I can only tell you what it feels like",
       "end": 28.942
     },
@@ -139,11 +120,6 @@
     {
       "start": 69.33,
       "text": " ",
-      "end": 69.33
-    },
-    {
-      "start": 69.33,
-      "text": "(Chorus: Rihanna)",
       "end": 69.34
     },
     {
@@ -183,11 +159,6 @@
     },
     {
       "start": 102.5,
-      "text": "(Verse 2: Eminen)",
-      "end": 102.51
-    },
-    {
-      "start": 102.51,
       "text": "You ever love somebody so much you can barely breathe when you're with 'em?",
       "end": 105.82
     },
@@ -293,11 +264,6 @@
     },
     {
       "start": 146.37,
-      "text": "(Chorus: Rihanna)",
-      "end": 146.37
-    },
-    {
-      "start": 146.37,
       "text": "Just gonna stand there and watch me burn?",
       "end": 151.49
     },
@@ -329,11 +295,6 @@
     {
       "start": 176.44,
       "text": " ",
-      "end": 179.84
-    },
-    {
-      "start": 179.84,
-      "text": "(Verse 3: Eminem)",
       "end": 179.84
     },
     {
@@ -425,11 +386,6 @@
       "start": 226.53,
       "text": " ",
       "end": 226.53
-    },
-    {
-      "start": 226.53,
-      "text": "(Chorus: Rihanna)",
-      "end": 226.54
     },
     {
       "start": 226.54,

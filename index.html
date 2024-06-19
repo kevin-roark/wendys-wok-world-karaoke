@@ -5,30 +5,81 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <button id="startButton">Start</button>
-
   <audio id="wendyTrackAudio" src="audio/wendy-track.mp3"></audio>
-  
-  <video class="video-bg" id="video1Bg"></video>
-  <video class="video-fg" id="video1Fg"></video>
-  <video class="video-bg" id="video2Bg"></video>
-  <video class="video-fg" id="video2Fg"></video>
-  <canvas class="video-canvas" id="video1Canvas"></canvas>
-  <canvas class="video-canvas" id="video2Canvas"></canvas>
+
+  <div class="video-container" id="video1Container">
+    <video class="video-bg-effect" id="video1BgEffect"></video>
+    <video class="video-bg" id="video1Bg"></video>
+    <video class="video-fg" id="video1Fg"></video>
+    <canvas class="video-canvas" id="video1Canvas"></canvas>
+  </div>
+  <div class="video-container" id="video2Container">
+    <video class="video-bg-effect" id="video2BgEffect"></video>
+    <video class="video-bg" id="video2Bg"></video>
+    <video class="video-fg" id="video2Fg"></video>
+    <canvas class="video-canvas" id="video2Canvas"></canvas>
+  </div>
+
+  <div id="video-overlay"></div>
 
   <div id="songInfo" class="large hidden">
     <div id="songTitle"></div>
     <div id="songArtist"></div>
   </div>
 
-  <div id="lyricsWrapper">
-    <div id="lyrics"></div>
-  </div>
+  <div id="lyrics"></div>
 
   <div id="intermission-bg"></div>
   <div id="intermission-content">
     <img id="flier-image" src="images/wendy-card.png" />
   </div>
+
+  <svg id="svgFilters">
+    <filter id="r">
+      <feColorMatrix
+        type="matrix"
+        values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0 "
+      />
+    </filter>
+    <filter id="g">
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0 "
+      />
+    </filter>
+    <filter id="b">
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0 "
+      />
+    </filter>
+    <filter id="rb">
+      <feColorMatrix
+        type="matrix"
+        values="1 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0 "
+      />
+    </filter>
+    <filter id="noise-color-matrix">
+      <feColorMatrix
+        type="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0 "
+      />
+    </filter>
+
+    <filter id='noise-grain' x='0' y='0'>
+      <feTurbulence
+        type='fractalNoise'
+        baseFrequency='0.3'
+        stitchTiles='stitch'
+      />
+    </filter>
+
+    <!-- https://tympanus.net/codrops/2019/02/19/svg-filter-effects-creating-texture-with-feturbulence/ -->
+    <filter id='noise-turbulence' x='0%' y='0%' width='100%' height='100%'>
+      <feTurbulence type="turbulence" baseFrequency="0.01 0.2" result="NOISE" numOctaves="2" />
+      <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="10" xChannelSelector="R" yChannelSelector="R"></feDisplacementMap>
+    </filter>
+  </svg>
 
   <script src="main.js"></script>
 </html>

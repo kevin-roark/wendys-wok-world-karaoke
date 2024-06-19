@@ -1,20 +1,58 @@
 /// CONSTANTS
 
-const msToShowSongInfo = 5000;
-const msToShowIntermission = 8000;
-const msVideoFade = 2000;
+const msToShowSongInfo = 15000;
+const msToShowIntermission = 30000;
+const msVideoFade = 500;
 const msFlierSlide = 2000;
+const msVideoFilterTransition = 10000;
 
-const karaokeLyricsColors = ["#7a54b1", "#ff0000", "#ffff00", "#000"];
-const chooseRandomLyricsColors = false;
+// const verticalVideoChoices = ['foreground', 'tile', 'center', 'bgEffect'];
+const verticalVideoChoices = ["tile", "fit", "bgEffect"];
+// const horizontalVideoChoices = ['fill', 'foreground', 'tile', 'fit'];
+const horizontalVideoChoices = ["fill"];
+const allChoices = [...verticalVideoChoices, ...horizontalVideoChoices];
+const hasFg = allChoices.includes("foreground");
+const hasBgEffect = allChoices.includes("bgEffect");
+const horizontalTileWidth = 2048;
+const verticalTileHeight = 1366;
 
-const showForegroundVideos = false;
-const tileVerticalVideos = true;
-const fitVerticalVideos = true;
-const tileHorizontalVideos = true;
-const fitHorizontalVideos = false;
-let maxTileWidth = 2048;
-let maxTileHeight = 900;
+const blurFilter = true;
+const blurFilterOps = { min: 0, max: 4 };
+
+const saturationFilter = true;
+const saturationFilterOps = {
+  minorProb: 0.8,
+  maxMinor: 200,
+  maxMajor: 400,
+};
+
+const sepiaFilter = true;
+const sepiaFilterOps = {
+  minorProb: 0.8,
+  maxMinor: 15,
+  maxMajor: 30,
+};
+
+const hueFilter = true;
+const hueFilterOps = {
+  minorProb: 0.85,
+  minorMag: 3,
+  majorMag: 8,
+};
+
+const noiseDisplacementFilter = true;
+const noiseDisplacementOps = {
+  xBase: 0.001,
+  xMag: 0.002,
+  yBase: 0.05,
+  yMag: 0.15,
+  scaleBase: 5,
+  minorScaleProb: 0.9,
+  minorScaleMag: 5,
+  majorScaleMag: 20,
+};
+
+const colorMatrixFilter = false;
 
 const videoFiles = shuffle([
   ...Array.from({ length: 34 }, (_, i) => `videos/video_${i + 1}.mp4`),
@@ -24,26 +62,26 @@ const videoFiles = shuffle([
 ]);
 
 const songs = [
-  "json/01_movement.json",
-  "json/02_see-you-again.json",
-  "json/03_discipline.json",
-  "json/04_successful.json",
-  "json/05_dont-stop-me-now.json",
-  "json/06_lose-control.json",
-  "json/07_creep.json",
-  "json/08_fml.json",
-  "json/09_feel-no-pain.json",
-  "json/10_fuck-tha-police.json",
-  "json/11_mockingbird.json",
-  "json/12_love-the-way-you-lie.json",
-  "json/13_yummy.json",
-  "json/14_saturday-nights-alright-for-fighting.json",
-  "json/15_power.json",
-  "json/16_sunflower.json",
+  // "json/01_movement.json",
+  // "json/02_see-you-again.json",
+  // "json/03_discipline.json",
+  // "json/04_successful.json",
+  // "json/05_dont-stop-me-now.json",
+  // "json/06_lose-control.json",
+  // "json/07_creep.json",
+  // "json/08_fml.json",
+  // "json/09_feel-no-pain.json",
+  // "json/10_fuck-tha-police.json",
+  // "json/11_mockingbird.json",
+  // "json/12_love-the-way-you-lie.json",
+  // "json/13_yummy.json",
+  // "json/14_saturday-nights-alright-for-fighting.json",
+  // "json/15_power.json",
+  // "json/16_sunflower.json",
   "json/17_hips-dont-lie.json",
-  "json/18_mobile.json",
-  "json/19_numb.json",
-  "json/20_mr-brightside.json",
+  // "json/18_mobile.json",
+  // "json/19_numb.json",
+  // "json/20_mr-brightside.json",
 ];
 
 const wendyKeywords = [
@@ -59,15 +97,18 @@ const wendyKeywords = [
 
 /// SETUP
 
-const startButton = document.getElementById("startButton");
 const wendyAudioEl = document.getElementById("wendyTrackAudio");
 const videoEls = [
   {
+    container: document.getElementById("video1Container"),
+    bgEffect: document.getElementById("video1BgEffect"),
     bg: document.getElementById("video1Bg"),
     fg: document.getElementById("video1Fg"),
     canvas: document.getElementById("video1Canvas"),
   },
   {
+    container: document.getElementById("video2Container"),
+    bgEffect: document.getElementById("video2BgEffect"),
     bg: document.getElementById("video2Bg"),
     fg: document.getElementById("video2Fg"),
     canvas: document.getElementById("video2Canvas"),
@@ -76,13 +117,38 @@ const videoEls = [
 const songInfoEl = document.getElementById("songInfo");
 const songTitleEl = document.getElementById("songTitle");
 const songArtistEl = document.getElementById("songArtist");
-const lyricsWrapperEl = document.getElementById("lyricsWrapper");
 const lyricsEl = document.getElementById("lyrics");
 const intermissionBg = document.getElementById("intermission-bg");
 const flierEl = document.getElementById("flier-image");
+const videoOverlay = document.getElementById("video-overlay");
+const noiseGrainEl = document.getElementById("noise-grain");
 
-startButton.onclick = start;
+document.onclick = start;
+setupFilterNoiseTurbulenceAnimation();
+flierEl.style.animation = "pulse 2s infinite ease";
 
+// setup video elements
+videoEls.forEach(({ bgEffect, bg, fg }) => {
+  setupVideoLoop(bg);
+  if (hasBgEffect) {
+    setupVideoLoop(bgEffect);
+    // https://motionarray.com/stock-video/burning-film-frame-1393401/
+    bgEffect.src = "videos/video_burning_film_frame_h264.mp4";
+  }
+  if (hasFg) {
+    setupVideoLoop(fg);
+  }
+
+  function setupVideoLoop(videoEl) {
+    videoEl.loop = true;
+    videoEl.onended = () => {
+      videoEl.currentTime = 0;
+      videoEl.play();
+    };
+  }
+});
+
+// load songs json
 let songsData = [];
 Promise.all(songs.map((song) => fetch(song).then((res) => res.json()))).then(
   (d) => {
@@ -103,7 +169,10 @@ let currentSongIndex = 0;
 async function start() {
   if (hasStarted) return;
   hasStarted = true;
-  startButton.style.display = "none";
+
+  if (hasBgEffect) {
+    videoEls.forEach(({ bgEffect }) => bgEffect.play());
+  }
 
   playVideoLoop();
 
@@ -132,8 +201,11 @@ async function playSongLoop() {
 
   async function playNextSong() {
     const song = songsData[currentSongIndex];
+    console.log("playing song", song.ti);
     await playSong(song);
+    console.log("done playing song", song.ti);
     currentSongIndex = (currentSongIndex + 1) % songsData.length;
+    console.log("next song", songsData[currentSongIndex].ti);
     await animateIntermission();
     playNextSong();
   }
@@ -141,44 +213,96 @@ async function playSongLoop() {
 
 async function playSong(song) {
   // start by showing song info (title, artist)
-  showSongInfo(song, true);
+  songInfoEl.style.opacity = 1;
+  await showSongInfo(song);
 
   // set up the karaoke lyrics
-  const initialDelay = song.scripts[0].start;
-  console.log("starting to play", song.ti, "with initial delay", initialDelay);
-  // await delaySeconds(song.scripts[0].start, initialDelay);
+  // const initialDelay = song.scripts[0].start;
+  console.log("starting to play", song.ti);
+  // await delaySeconds(initialDelay);
 
-  for (const line of song.scripts) {
+  // setup animation for each line of song
+  // let currentDelay = initialDelay;
+  for (let lineIndex = 0; lineIndex < song.scripts.length; lineIndex++) {
+    const line = song.scripts[lineIndex];
     const { start, text, end } = line;
     const duration = end - start;
 
-    lyricsEl.parentNode.removeChild(lyricsEl);
+    setTimeout(() => {
+      lyricsEl.innerHTML = "";
+      lyricsEl.style.fontSize = getLyricsFontSize(text);
+      lyricsEl.style.opacity = 1;
 
-    lyricsEl.style.fontSize = getLyricsFontSize(text);
+      // create spans for each word in the line so that we can wrap them if necessary
+      const words = text.split(" ");
+      const spans = words.map((word) => {
+        const span = document.createElement("span");
+        span.textContent = word;
+        span.classList.add("lyrics-word");
+        span.setAttribute("data-text", word);
+        const isKeyword = wendyKeywords.includes(word.toLowerCase());
+        if (isKeyword) span.classList.add("wendy-keyword");
+        return span;
+      });
 
-    const words = text.split(" ");
-    const spans = words.map((word) => {
-      const isKeyword = wendyKeywords.includes(word.toLowerCase());
-      return isKeyword
-        ? `<span class="wendy-keyword">${word}</span>`
-        : `<span>${word}</span>`;
-    });
-    lyricsEl.innerHTML = spans.join(" ");
+      spans.forEach((span) => lyricsEl.appendChild(span));
 
-    lyricsEl.setAttribute("data-text", text);
+      // setup animation for each word individually
+      const spaceFreeText = text.replace(/ /g, "");
+      let currentDelay = 0;
+      for (let i = 0; i < words.length; i++) {
+        const wordDuration =
+          duration * (words[i].length / spaceFreeText.length);
+        const span = spans[i];
+        span.style.setProperty("--karaoke-line-duration", `${wordDuration}s`);
+        setTimeout(() => span.classList.add("sung"), currentDelay * 1000 - 50);
 
-    lyricsEl.style.setProperty("--karaoke-line-duration", `${duration}s`);
+        currentDelay += wordDuration * 0.95; // accumulate a little buffer at the end and go faster between words
+      }
 
-    if (chooseRandomLyricsColors) {
-      document.documentElement.style.setProperty(
-        "--karaoke-lyrics-color",
-        choice(karaokeLyricsColors)
-      );
+      // remove the final lyrics
+      if (lineIndex === song.scripts.length - 1) {
+        setTimeout(() => {
+          lyricsEl.style.opacity = 0;
+        }, currentDelay * 1000);
+      }
+    }, start * 1000);
+
+    const nextLine =
+      lineIndex < song.scripts.length - 1 && song.scripts[lineIndex + 1];
+    if (nextLine && nextLine.start - end > 2) {
+      setTimeout(() => {
+        lyricsEl.innerHTML = "";
+      }, (end + 1.5) * 1000);
     }
 
-    lyricsWrapperEl.appendChild(lyricsEl);
-    await delaySeconds(duration);
+    // if prev line end is before this line start, delay the difference
+    // const prevLine = lineIndex > 0 && song.scripts[lineIndex - 1];
+    // if (prevLine && prevLine.end < start) {
+    //   currentDelay += start - prevLine.end;
+    //   // await delaySeconds(start - prevLine.end);
+    // }
+
+    // show the line, fully filled, for a brief moment
+    // if (duration > endOfLineBuffer) {
+    //   // await delaySeconds(endOfLineBuffer);
+    //   currentDelay += endOfLineBuffer;
+    // }
   }
+
+  // remove the final lyrics
+  // lyricsEl.style.opacity = 0;
+
+  // wait until the song is over
+  const [songMinutes, songSeconds] = song.length.split(":").map(Number);
+  const songDuration = songMinutes * 60 + songSeconds;
+  // const durationAfterLastLine = song.scripts[song.scripts.length - 1].end;
+  // const timeLeft = songDuration - durationAfterLastLine;
+  // await delaySeconds(timeLeft);
+  await delaySeconds(songDuration);
+
+  // remove the song info
+  songInfoEl.style.opacity = 0;
 }
 
 // shows the song title and artist for a few seconds
@@ -188,6 +312,7 @@ async function showSongInfo(song) {
   songInfoEl.classList.add("large");
   await delay(msToShowSongInfo - 500);
   songInfoEl.classList.remove("large");
+  await delay(500);
 }
 
 function hydrateSongInfo(song) {
@@ -198,6 +323,7 @@ function hydrateSongInfo(song) {
 
 function getLyricsFontSize(text) {
   const numChars = text.length;
+  if (numChars > 50) return "5rem";
   if (numChars > 30) return "6rem";
   if (numChars > 20) return "8rem";
   if (numChars > 12) return "10rem";
@@ -213,77 +339,67 @@ async function animateIntermission() {
 }
 
 async function animateIntermissionIn() {
-  const slideInAnimations = [
-    "slideInFromLeft",
-    "slideInFromRight",
-    "slideInFromTop",
-    "slideInFromBottom",
-  ];
-  const idleAnimations = ["pulse", "bounce", "spin", "shake"];
-  const slideAnim = choice(slideInAnimations);
-
-  flierEl.style.display = "none";
   intermissionBg.style.opacity = 1;
-  intermissionBg.style.display = "block";
-  intermissionBg.style.animation = `fadeIn 0.7s ease, ${slideAnim} 1s ease`;
-  await delay(500);
+  intermissionBg.style.transform = "translate(0, 0)";
+  await delay(300);
 
-  flierEl.style.display = "block";
-  flierEl.style.animation = `${slideAnim} ${msFlierSlide}ms ease`;
+  flierEl.style.transform = "translate(0, 0)";
   await delay(msFlierSlide);
 
-  flierEl.style.animation = `${choice(idleAnimations)} ${randomInt(
-    1000,
-    4000
-  )}ms ease infinite`;
+  const idleAnimations = ["pulse"];
+  const idleAnim = choice(idleAnimations);
+  const idleAnimTime = randomInt(1000, 4000);
+  flierEl.style.animation = `${idleAnim} ${idleAnimTime}ms ease infinite`;
 }
 
 async function animateIntermissionOut() {
-  const slideOutAnimations = [
-    "slideOutToRight",
-    "slideOutToLeft",
-    "slideOutToTop",
-    "slideOutToBottom",
+  const slideOutTransforms = [
+    "translate(-250%, 0)",
+    "translate(250%, 0)",
+    "translate(0, -250%)",
+    "translate(0, 250%)",
   ];
-  const slideAnim = choice(slideOutAnimations);
+  const slideTransform = choice(slideOutTransforms);
 
-  flierEl.style.animation = `${slideAnim} 2s ease`;
+  // next tick vibes
+  flierEl.style.animation = "";
+  setTimeout(() => {
+    flierEl.style.transform = slideTransform;
+  }, 30);
+
   setTimeout(() => {
     intermissionBg.style.opacity = 0;
-    intermissionBg.style.animation = `fadeOut 0.7s ease, ${slideAnim} 1s ease`;
-  }, 500);
+    intermissionBg.style.transform = slideTransform;
+  }, 300);
 
   await delay(msFlierSlide);
-  flierEl.style.display = "none";
 }
 
 /// VIDEO
 
 function playVideoLoop() {
   // intialize the video elements
-  videoEls.forEach(({ bg, fg, canvas }) => {
+  videoEls.forEach(({ container, bg, bgEffect, fg, canvas }) => {
     bg.muted = true;
     fg.muted = true;
-    bg.style.opacity = 0;
-    fg.style.opacity = 0;
-    canvas.style.opacity = 0;
+    bgEffect.muted = true;
+    bgEffect.style.display = "none";
+    container.style.opacity = 0;
+    setupVideoFilterAnimation(bg, canvas);
   });
+
   loadVideoOntoElement(videoEls[0].bg, videoFiles[0]);
-  loadVideoOntoElement(videoEls[0].fg, videoFiles[0]);
+  hasFg && loadVideoOntoElement(videoEls[0].fg, videoFiles[0]);
 
   playNextVideo();
 
   async function playNextVideo() {
     // choose video file, start playing it, fade in the video
     const videoFile = videoFiles[currentVideoIndex];
-    const {
-      bg: bgVideoEl,
-      fg: fgVideoEl,
-      canvas: canvasEl,
-    } = videoEls[currentVideoElIndex];
-    const curEls = [bgVideoEl, fgVideoEl, canvasEl];
-    curEls.forEach(fadeInElement);
-    await playVideo(bgVideoEl, fgVideoEl, canvasEl, videoFile);
+    const curEls = videoEls[currentVideoElIndex];
+    const { container } = curEls;
+    fadeInElement(container);
+    await playVideo(curEls, videoFile);
 
     // don't load the next video until we are done fading out the current video
     await delay(msVideoFade);
@@ -309,7 +425,7 @@ function playVideoLoop() {
     await delay(durationMs - msVideoFade * 2);
 
     // fade out the current video
-    curEls.forEach(fadeOutElement);
+    fadeOutElement(container);
 
     // play the next video, which will be faded in
     playNextVideo();
@@ -317,10 +433,10 @@ function playVideoLoop() {
 }
 
 function loadVideoOntoElement(videoEl, videoFile) {
-  console.log("loading video onto element", videoFile);
   videoEl.pause();
   videoEl.src = videoFile;
   videoEl.currentTime = 0;
+  videoEl.play();
 
   videoEl.onloadedmetadata = function () {
     if (!videoMetadataMap[videoFile]) {
@@ -330,7 +446,7 @@ function loadVideoOntoElement(videoEl, videoFile) {
         duration: videoEl.duration,
         isVertical: this.videoHeight > this.videoWidth,
       };
-      console.log("vid metadata", videoFile, videoMetadataMap[videoFile]);
+      // console.log("vid metadata", videoFile, videoMetadataMap[videoFile]);
     }
   };
 }
@@ -343,6 +459,7 @@ function setupVideoTileCanvas(videoEl, canvas, videoFile) {
     const active = videoElActiveVideoFileMap[videoEl.id] === videoFile;
     if (!active) {
       console.log("stopping video tile canvas for", videoFile);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       return;
     }
 
@@ -352,14 +469,10 @@ function setupVideoTileCanvas(videoEl, canvas, videoFile) {
 
     // calculate number of tiles required and draw the video onto the canvas X * Y times
     const metadata = videoMetadataMap[videoFile];
-    let [vWidth, vHeight] = [metadata.width, metadata.height];
-    if (!metadata.isVertical && vWidth > maxTileWidth) {
-      vHeight = (vHeight / vWidth) * maxTileWidth;
-      vWidth = maxTileWidth;
-    } else if (metadata.isVertical && vHeight > maxTileHeight) {
-      vWidth = (vWidth / vHeight) * maxTileHeight;
-      vHeight = maxTileHeight;
-    }
+    const [mWidth, mHeight] = [metadata.width, metadata.height];
+    const [vWidth, vHeight] = metadata.isVertical
+      ? [(mWidth / mHeight) * verticalTileHeight, verticalTileHeight]
+      : [horizontalTileWidth, (mHeight / mWidth) * horizontalTileWidth];
 
     const xTiles = Math.ceil(canvas.width / vWidth) || 1;
     const yTiles = Math.ceil(canvas.height / vHeight) || 1;
@@ -375,26 +488,151 @@ function setupVideoTileCanvas(videoEl, canvas, videoFile) {
   requestAnimationFrame(step);
 }
 
+function setupVideoFilterAnimation(videoEl, canvasEl) {
+  function step() {
+    const blur = blurFilter
+      ? randomInt(blurFilterOps.min, blurFilterOps.max)
+      : 0;
+    const saturation = saturationFilter
+      ? Math.random() < saturationFilterOps.minorProb
+        ? randomInt(100, saturationFilterOps.maxMinor)
+        : randomInt(saturationFilterOps.maxMinor, saturationFilterOps.maxMajor)
+      : 100;
+    const sepia = sepiaFilter
+      ? Math.random() < sepiaFilterOps.minorProb
+        ? randomInt(1, sepiaFilterOps.maxMinor)
+        : randomInt(sepiaFilterOps.maxMinor, sepiaFilterOps.maxMajor)
+      : 0;
+    const hue = hueFilter
+      ? Math.random() < hueFilterOps.minorProb
+        ? randomInt(-hueFilterOps.minorMag, hueFilterOps.minorMag)
+        : randomInt(-hueFilterOps.majorMag, hueFilterOps.majorMag)
+      : 0;
+    const filter = `blur(${blur}px) saturate(${saturation}%) sepia(${sepia}%) hue-rotate(${hue}deg)`;
+    videoEl.style.filter = filter;
+    canvasEl.style.filter = filter;
+    setTimeout(step, msVideoFilterTransition);
+  }
+  step();
+}
+
+function setupFilterNoiseTurbulenceAnimation() {
+  const turb = document.querySelector("#noise-turbulence feTurbulence");
+  const turbMap = document.querySelector("#noise-turbulence feDisplacementMap");
+  const colorMatrix = document.querySelector(
+    "#noise-color-matrix feColorMatrix"
+  );
+
+  let animCount = 0;
+  let prev = { x: 0.01, y: 0.2, scale: 30, r: 1, g: 1, b: 1 };
+  let params = getParams();
+  function step() {
+    let { x, y, scale, r, g, b, numSteps, stepIdx } = params;
+    const p = stepIdx / numSteps;
+
+    if (noiseDisplacementFilter) {
+      const curX = prev.x + (x - prev.x) * p;
+      const curY = prev.y + (y - prev.y) * p;
+      const curScale = prev.scale + (scale - prev.scale) * p;
+      turb.setAttribute("baseFrequency", `${curX} ${curY}`);
+      turbMap.setAttribute("scale", Math.round(curScale));
+    }
+
+    if (colorMatrixFilter) {
+      const curR = prev.r + (r - prev.r) * p;
+      const curG = prev.g + (g - prev.g) * p;
+      const curB = prev.b + (b - prev.b) * p;
+      colorMatrix.setAttribute(
+        "values",
+        `${curR} 0 0 0 0  0 ${curG} 0 0 0  0 0 ${curB} 0 0  0 0 0 1 0`
+      );
+    }
+
+    params.stepIdx += 1;
+    if (params.stepIdx > numSteps) {
+      prev = params;
+      animCount += 1;
+      params = getParams();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  step();
+
+  function getParams() {
+    let x =
+      noiseDisplacementOps.xBase +
+      (Math.random() - 0.5) * noiseDisplacementOps.xMag;
+    let y =
+      noiseDisplacementOps.yBase +
+      (Math.random() - 0.5) * noiseDisplacementOps.yMag;
+    let scale =
+      noiseDisplacementOps.scaleBase +
+      (Math.random() < noiseDisplacementOps.minorScaleProb
+        ? (Math.random() - 0.5) * noiseDisplacementOps.minorScaleMag
+        : Math.random() * noiseDisplacementOps.majorScaleMag);
+
+    let r = 1,
+      g = 1,
+      b = 1,
+      random = Math.random();
+    if (random < 0.33) {
+      g = 0.1 + Math.random() * 0.8;
+      b = 0.1 + Math.random() * 0.8;
+    } else if (random < 0.66) {
+      r = 0.1 + Math.random() * 0.8;
+      b = 0.1 + Math.random() * 0.8;
+    } else {
+      r = 0.1 + Math.random() * 0.8;
+      g = 0.1 + Math.random() * 0.8;
+    }
+
+    let duration = Math.random() * 10000;
+    let numSteps = duration / 30;
+    let stepIdx = 0;
+    return { x, y, scale, r, g, b, duration, numSteps, stepIdx };
+  }
+}
+
 // we do a nice vertical video overlaid onto bg cover-fit of same video effect :)
-async function playVideo(bgVideoEl, fgVideoEl, canvasEl, videoFile) {
+async function playVideo(videoEls, videoFile) {
+  const {
+    bg: bgVideoEl,
+    bgEffect: bgEffectVideoEl,
+    fg: fgVideoEl,
+    canvas: canvasEl,
+  } = videoEls;
   await waitForVideoMetadata(videoFile);
   const { duration, isVertical } = videoMetadataMap[videoFile];
 
   videoElActiveVideoFileMap[bgVideoEl.id] = videoFile;
   videoElActiveVideoFileMap[fgVideoEl.id] = videoFile;
 
-  const shouldTile = isVertical ? tileVerticalVideos : tileHorizontalVideos;
+  const videoChoice = choice(
+    isVertical ? verticalVideoChoices : horizontalVideoChoices
+  );
+  const shouldTile = videoChoice === "tile";
+  const shouldShowForeground = videoChoice === "foreground";
+
   if (shouldTile) {
     setupVideoTileCanvas(bgVideoEl, canvasEl, videoFile);
   }
 
-  const shouldFit = isVertical ? fitVerticalVideos : fitHorizontalVideos;
+  const shouldFit = videoChoice === "fit" || videoChoice === "bgEffect";
+  const shouldUseEffect = videoChoice === "bgEffect";
+  const fitWithBgEffect = videoChoice === "bgEffect";
   bgVideoEl.style.objectFit = shouldFit ? "contain" : "cover";
+  bgVideoEl.style.objectPosition = fitWithBgEffect ? "right" : "center";
+  bgVideoEl.style.height = fitWithBgEffect ? "calc(100vh - 40px)" : "100vh";
+  bgVideoEl.style.top = fitWithBgEffect ? "20px" : "0";
+  bgEffectVideoEl.style.display = shouldUseEffect ? "block" : "none";
 
   console.log("ok playing video", videoFile, duration);
   bgVideoEl.play();
 
-  if (showForegroundVideos) {
+  if (shouldShowForeground) {
+    fgVideoEl.style.display = "block";
     if (isVertical) {
       fgVideoEl.classList.add("vertical");
     } else {
@@ -402,6 +640,8 @@ async function playVideo(bgVideoEl, fgVideoEl, canvasEl, videoFile) {
     }
 
     fgVideoEl.play();
+  } else {
+    fgVideoEl.style.display = "none";
   }
 }
 
@@ -455,18 +695,16 @@ function fadeOutAudio(audioEl) {
 
 async function fadeInElement(el) {
   el.style.opacity = 1;
-  el.style.animation = `fadeIn ${msVideoFade}ms`;
   await delay(msVideoFade);
 }
 
 async function fadeOutElement(el) {
   el.style.opacity = 0;
-  el.style.animation = `fadeOut ${msVideoFade}ms`;
   await delay(msVideoFade);
 }
 
 async function waitForVideoMetadata(videoFile) {
   while (!videoMetadataMap[videoFile]) {
-    await delay(30);
+    await delay(10);
   }
 }

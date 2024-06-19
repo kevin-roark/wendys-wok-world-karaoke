@@ -12,32 +12,43 @@ body {
   background-color: var(--theme-bg);
 }
 
-#startButton {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  padding: 1rem 2rem;
-  font-size: 2rem;
-  font-weight: 600;
-  background-color: yellow;
-  color: black;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.video-bg {
+.video-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+  opacity: 0;
+  filter: url("#noise-turbulence") url("#noise-color-matrix");
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  filter: saturate(150%) blur(2px) sepia(15%);
+  transition: filter 10s;
+}
+
+.video-bg-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
 }
 
 .video-fg {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -55,11 +66,25 @@ body {
 }
 
 .video-canvas {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  filter: saturate(150%) blur(2px) sepia(15%);
+  transition: filter 10s;
+}
+
+#video-overlay {
+  position: fixed;
+  top: -150vh;
+  left: -50vw;
+  width: 300vw;
+  height: 300vh;
+  background-color: transparent;
+  opacity: 0.4;
+  filter: url("#noise-grain");
+  animation: grain 8s steps(10) infinite;
 }
 
 #songInfo {
@@ -69,19 +94,23 @@ body {
   transform: translate(calc(100vw - 100% - 24px), calc(20px));
   text-align: right;
   max-width: 80vw;
-  font-size: 2rem;
+  font-size: 3rem;
   line-height: 1;
   font-weight: 600;
   color: white;
   text-shadow: 0 0 8px black;
   transition: all 0.5s;
+  white-space: nowrap;
 }
 #songInfo.large {
   font-size: 12rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: none;
+  width: 98vw;
   text-align: center;
+  white-space: normal;
 }
 #songInfo.hidden {
   opacity: 0;
@@ -89,6 +118,7 @@ body {
 
 #songTitle {
   font-size: 100%;
+  line-height: 1.3;
 }
 #songArtist {
   margin-top: 0.4rem;
@@ -98,45 +128,62 @@ body {
   margin-top: 1rem;
 }
 
-#lyricsWrapper {
+#lyrics {
   position: fixed;
-  bottom: 40px;
-  left: 4px;
-  right: 4px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  z-index: 1;
-}
-
-#lyrics {
-  position: relative;
   font-size: 8rem;
   font-weight: 600;
   letter-spacing: 0.1rem;
-  line-height: 2;
+  line-height: 1;
   color: white;
   text-shadow: 0 0 4px white;
+  transition: opacity 1s;
+}
+
+.lyrics-word {
+  position: relative;
+  display: inline-block;
+  padding: 3.2rem 1.5rem;
+  overflow-x: hidden;
+  overflow-y: visible;
   white-space: nowrap;
 }
 
-#lyrics::after {
+.lyrics-word.sung::after {
   content: attr(data-text);
   position: absolute;
   left: 0;
   top: 0;
-  overflow: hidden;
+  padding: 3.2rem 1.5rem;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: visible;
   color: var(--karaoke-lyrics-color);
   text-shadow: 0 0 8px var(--karaoke-lyrics-color);
-  animation: karaoke-text var(--karaoke-line-duration) infinite linear;
+  animation: karaoke-text var(--karaoke-line-duration) linear;
 }
 
 /** purple text with yellow afterglow effect https://freefrontend.com/css-glow-text-effects/ */
 .wendy-keyword {
   color: #cbbce1;
-  --wendy-text-shadow-color: #ff0;
+
+  --color1: yellow;
+  --color2: gold;
+  --color3: orange;
+  filter: drop-shadow(0 0 0.5rem var(--color1))
+    drop-shadow(0 0 1rem var(--color2)) drop-shadow(0 0 2rem var(--color3));
+
+  /* Other Options Below */
 
   /* https://codepen.io/AllThingsSmitty/pen/VzXrgY */
+  /* --wendy-text-shadow-color: #ff0; */
   /* text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff,
     0 0 40px var(--wendy-text-shadow-color),
     0 0 80px var(--wendy-text-shadow-color),
@@ -152,7 +199,7 @@ body {
     30px 30px 60px var(--wendy-text-shadow-color); */
 
   /* https://codepen.io/erikjung/pen/XdWEKE */
-  --color1: yellow;
+  /* --color1: yellow;
   --color2: gold;
   --color3: orange;
   text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
@@ -160,6 +207,8 @@ body {
     0 0 60px var(--color2), 0 0 70px var(--color3), 0 0 80px var(--color1),
     0 0 100px var(--color2), 0 0 120px var(--color3);
   animation: flicker-wendy-text 3s infinite;
+  filter: drop-shadow(0 0 0.5rem var(--color1))
+    drop-shadow(0 0 1rem var(--color2)) drop-shadow(0 0 2rem var(--color3)); */
 
   /* https://codepen.io/nodws/pen/WNjXbr */
   /* text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em yellow, 0 0 0.5em yellow,
@@ -176,6 +225,7 @@ body {
   background-color: var(--theme-bg);
   box-shadow: 0 25px 50px 12px rgb(0 0 0 / 0.1);
   border-radius: 16px;
+  transition: opacity 0.7s ease, transform 1s ease;
 }
 
 #intermission-content {
@@ -195,7 +245,8 @@ body {
   box-shadow: 0 25px 50px 12px rgb(0 0 0 / 0.25);
   border-radius: 16px;
   border: 2px solid #4e3856;
-  animation: bounce 2s infinite ease;
+  transition: all 2s ease;
+  transform: translate(0, 0);
 }
 
 /** Shadows */
@@ -225,129 +276,37 @@ body {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
   }
-  to {
-    opacity: 1;
+  10% {
+    transform: translate(-5%, -10%);
   }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
+  20% {
+    transform: translate(-15%, 5%);
   }
-  to {
-    opacity: 0;
+  30% {
+    transform: translate(7%, -25%);
   }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.01);
+  40% {
+    transform: translate(-5%, 25%);
   }
-  to {
-    transform: scale(1);
+  50% {
+    transform: translate(-15%, 10%);
   }
-}
-
-@keyframes scaleOut {
-  from {
-    transform: scale(1);
+  60% {
+    transform: translate(15%, 0%);
   }
-  to {
-    transform: scale(0.01);
+  70% {
+    transform: translate(0%, 15%);
   }
-}
-
-@keyframes scaleInGentle {
-  from {
-    transform: scale(0.8);
+  80% {
+    transform: translate(3%, 35%);
   }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes scaleOutGentle {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(0.8);
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translate(-250%, 0);
-  }
-  to {
-    transform: none;
-  }
-}
-
-@keyframes slideOutToLeft {
-  from {
-    transform: none;
-  }
-  to {
-    transform: translate(-250%, 0);
-  }
-}
-
-@keyframes slideInFromRight {
-  from {
-    transform: translate(250%);
-  }
-  to {
-    transform: none;
-  }
-}
-
-@keyframes slideOutToRight {
-  from {
-    transform: none;
-  }
-  to {
-    transform: translate(250%, 0);
-  }
-}
-
-@keyframes slideInFromTop {
-  from {
-    transform: translate(0, -250%);
-  }
-  to {
-    transform: none;
-  }
-}
-
-@keyframes slideOutToTop {
-  from {
-    transform: none;
-  }
-  to {
-    transform: translate(0, -250%);
-  }
-}
-
-@keyframes slideInFromBottom {
-  from {
-    transform: translate(0, 250%);
-  }
-  to {
-    transform: none;
-  }
-}
-
-@keyframes slideOutToBottom {
-  from {
-    transform: none;
-  }
-  to {
-    transform: translate(0, 250%);
+  90% {
+    transform: translate(-10%, 10%);
   }
 }
 
